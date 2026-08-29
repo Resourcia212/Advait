@@ -41,75 +41,30 @@ export const getDoctorDisplayName = (doctorName?: string): string => {
 };
 
 /**
- * Creates an executive, highly professional WhatsApp message pre-filled with structured patient and booking details.
+ * Creates a clean, highly structured WhatsApp message pre-filled with all patient details.
  */
 export const generateStructuredWhatsAppUrl = (data: AppointmentFormData): string => {
   const targetPhone = getDoctorWhatsAppNumber(data.preferredDoctor);
   const targetDoctor = getDoctorDisplayName(data.preferredDoctor);
   const treatmentText = data.treatment?.trim() || 'General Consultation & Dental Checkup';
+  const emailText = data.email?.trim() ? `\n✉️ *Email:* ${data.email.trim()}` : '';
+  const notesText = data.message?.trim() ? `\n📝 *Notes / Symptoms:* ${data.message.trim()}` : '';
 
-  // Format date nicely (e.g. "Fri, 02 Oct 2026")
-  let formattedDate = data.preferredDate || '';
-  try {
-    if (data.preferredDate) {
-      const d = new Date(data.preferredDate + 'T00:00:00');
-      if (!isNaN(d.getTime())) {
-        formattedDate = d.toLocaleDateString('en-IN', {
-          weekday: 'short',
-          year: 'numeric',
-          month: 'short',
-          day: '2-digit',
-        });
-      }
-    }
-  } catch {
-    formattedDate = data.preferredDate;
-  }
+  const message = [
+    `🏥 *ADVAIT DENTAL CLINIC & IMPLANT CENTRE*`,
+    `_Official Appointment Request_`,
+    `━━━━━━━━━━━━━━━━━━━━━━━━`,
+    `👤 *Patient Name:* ${data.fullName.trim()}`,
+    `📞 *Phone Number:* ${data.phone.trim()}${emailText}`,
+    `📍 *Clinic Branch:* ${data.preferredClinic}`,
+    `👨‍⚕️ *Doctor Requested:* ${targetDoctor}`,
+    `📅 *Preferred Date:* ${data.preferredDate}`,
+    `⏰ *Time Slot:* ${data.preferredTime}`,
+    `🩺 *Treatment / Reason:* ${treatmentText}${notesText}`,
+    `━━━━━━━━━━━━━━━━━━━━━━━━`,
+    `_Sent via Advait Dental Clinic Portal (Nashik)_`
+  ].join('\n');
 
-  const lines: string[] = [
-    `✨ *DR. SHINDE'S ADVAIT DENTAL CLINIC* ✨`,
-    `_Multispeciality Dental & Implant Centre • Nashik_`,
-    `══════════════════════════`,
-    `📋 *NEW APPOINTMENT REQUEST*`,
-    `══════════════════════════`,
-    ``,
-    `👤 *PATIENT INFORMATION*`,
-    `• *Full Name:* ${data.fullName.trim()}`,
-    `• *Contact Number:* +91 ${data.phone.trim()}`,
-  ];
-
-  if (data.email?.trim()) {
-    lines.push(`• *Email Address:* ${data.email.trim()}`);
-  }
-
-  lines.push(
-    ``,
-    `🦷 *CONSULTATION DETAILS*`,
-    `• *Doctor Requested:* ${targetDoctor}`,
-    `• *Clinic Branch:* ${data.preferredClinic}`,
-    `• *Treatment / Reason:* ${treatmentText}`,
-    ``,
-    `🗓️ *SCHEDULE PREFERRED*`,
-    `• *Preferred Date:* ${formattedDate}`,
-    `• *Time Slot:* ${data.preferredTime}`
-  );
-
-  if (data.message?.trim()) {
-    lines.push(
-      ``,
-      `💬 *PATIENT REMARKS / SYMPTOMS*`,
-      `• "${data.message.trim()}"`
-    );
-  }
-
-  lines.push(
-    ``,
-    `══════════════════════════`,
-    `🌟 _Sent via Advait Official Dental Portal (Nashik)_`,
-    `📍 _Indira Nagar & Panchavati Branches_`
-  );
-
-  const message = lines.join('\n');
   return `https://wa.me/91${targetPhone}?text=${encodeURIComponent(message)}`;
 };
 
