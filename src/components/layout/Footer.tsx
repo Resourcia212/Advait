@@ -109,12 +109,12 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Col 2: Navigation Links (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
+          {/* Col 2: Navigation Links (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-advait-teal-light">
-              {currentLang === 'en' ? 'Quick Navigation' : 'महत्त्वाच्या लिंक्स'}
+              {currentLang === 'en' ? 'Quick Links' : 'महत्त्वाच्या लिंक्स'}
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-1.5 text-xs text-slate-300">
+            <div className="flex flex-col gap-1.5 text-xs text-slate-300">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -154,45 +154,46 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Col 4: Direct Contacts & Booking (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
+          {/* Col 4: Direct Contacts & Booking (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-advait-teal-light">
               {currentLang === 'en' ? 'Contact Details' : 'थेट संपर्क'}
             </h4>
-            <div className="space-y-2 text-xs text-slate-300">
+            <div className="space-y-2.5 text-xs text-slate-300">
               <a
                 href={`tel:${PRIMARY_PHONE}`}
-                className="flex items-center gap-1.5 hover:text-white hover:translate-x-0.5 transition-all duration-200"
+                className="flex items-center gap-2 hover:text-white hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap"
                 title="Call Dr. Lilesh A. Shinde"
               >
                 <Phone className="w-3.5 h-3.5 text-advait-green shrink-0" />
-                <span>
-                  <strong className="text-white">Dr. Lilesh:</strong> {DISPLAY_PRIMARY_PHONE}
+                <span className="whitespace-nowrap">
+                  <strong className="text-white font-semibold">Dr. Lilesh:</strong> {DISPLAY_PRIMARY_PHONE}
                 </span>
               </a>
               <a
                 href={`tel:${SECONDARY_PHONE}`}
-                className="flex items-center gap-1.5 hover:text-white hover:translate-x-0.5 transition-all duration-200"
+                className="flex items-center gap-2 hover:text-white hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap"
                 title="Call Dr. Mayuree L. Shinde (Patil)"
               >
                 <Phone className="w-3.5 h-3.5 text-advait-teal-light shrink-0" />
-                <span>
-                  <strong className="text-white">Dr. Mayuree:</strong> {DISPLAY_SECONDARY_PHONE}
+                <span className="whitespace-nowrap">
+                  <strong className="text-white font-semibold">Dr. Mayuree:</strong> {DISPLAY_SECONDARY_PHONE}
                 </span>
               </a>
               <a
                 href={`mailto:${CLINIC_EMAIL}`}
-                className="flex items-center gap-1.5 hover:text-white hover:translate-x-0.5 transition-all duration-200 break-all"
+                className="flex items-center gap-2 hover:text-white hover:translate-x-0.5 transition-all duration-200"
+                title="Email Advait Dental Clinic"
               >
                 <Mail className="w-3.5 h-3.5 text-advait-teal-light shrink-0" />
-                <span>{CLINIC_EMAIL}</span>
+                <span className="truncate">{CLINIC_EMAIL}</span>
               </a>
             </div>
 
             <div className="pt-2">
               <button
                 onClick={onOpenAppointmentModal}
-                className="w-full py-2.5 px-3 rounded-xl bg-advait-blue hover:bg-advait-blue-light hover:shadow-md hover:-translate-y-0.5 text-white text-xs font-bold shadow-xs transition-all duration-200 active:scale-95"
+                className="w-full py-2.5 px-3 rounded-xl bg-advait-blue hover:bg-advait-blue-light hover:shadow-md hover:-translate-y-0.5 text-white text-xs font-bold shadow-xs transition-all duration-200 active:scale-95 whitespace-nowrap"
               >
                 {currentLang === 'en' ? 'Book Appointment' : 'वेळ निश्चित करा'}
               </button>
