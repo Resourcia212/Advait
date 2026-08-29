@@ -11,6 +11,7 @@ import {
   DOCTOR_INFO,
   DOCTOR_MAYUREE_INFO
 } from '../../data/clinicInfo';
+import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
 
 interface ContactSectionProps {
   currentLang: Language;
@@ -32,11 +33,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
 
   const validate = (): boolean => {
     const errs: Partial<Record<keyof ContactFormData, string>> = {};
-    if (!formData.name.trim()) errs.name = currentLang === 'en' ? 'Name is required' : 'नाव आवश्यक आहे';
-    const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
-    if (!cleanPhone || cleanPhone.length < 10) {
-      errs.phone = currentLang === 'en' ? 'Valid 10-digit phone number is required' : '१० अंकी फोन नंबर आवश्यक आहे';
+    
+    // Validate genuine patient name
+    const nameCheck = validatePatientName(formData.name, currentLang);
+    if (!nameCheck.isValid && nameCheck.error) {
+      errs.name = nameCheck.error;
     }
+
+    // Validate genuine Indian mobile number (anti-spam)
+    const phoneCheck = validateGenuineMobile(formData.phone, currentLang);
+    if (!phoneCheck.isValid && phoneCheck.error) {
+      errs.phone = phoneCheck.error;
+    }
+
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errs.email = currentLang === 'en' ? 'Valid email required' : 'वैध ईमेल आवश्यक आहे';
     }

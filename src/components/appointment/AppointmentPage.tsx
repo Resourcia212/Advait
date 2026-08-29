@@ -4,6 +4,7 @@ import { AppointmentFormData, Language } from '../../types';
 import { CLINIC_LOCATIONS, PRIMARY_PHONE, SECONDARY_PHONE, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDARY_PHONE, DOCTOR_INFO, DOCTOR_MAYUREE_INFO } from '../../data/clinicInfo';
 import { BookingConfirmation } from './BookingConfirmation';
 import { redirectToDoctorWhatsApp } from '../../lib/whatsapp';
+import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
 
 interface AppointmentPageProps {
   currentLang: Language;
@@ -55,13 +56,16 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
   const validate = (): boolean => {
     const errs: Partial<Record<keyof AppointmentFormData, string>> = {};
 
-    if (!formData.fullName.trim()) {
-      errs.fullName = currentLang === 'en' ? 'Full name is required' : 'कृपया पूर्ण नाव प्रविष्ट करा';
+    // Validate genuine patient name
+    const nameCheck = validatePatientName(formData.fullName, currentLang);
+    if (!nameCheck.isValid && nameCheck.error) {
+      errs.fullName = nameCheck.error;
     }
 
-    const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
-    if (!cleanPhone || cleanPhone.length < 10) {
-      errs.phone = currentLang === 'en' ? 'Valid 10-digit phone number is required' : 'कृपया १० अंकी वैध फोन नंबर प्रविष्ट करा';
+    // Validate genuine Indian mobile number (anti-spam)
+    const phoneCheck = validateGenuineMobile(formData.phone, currentLang);
+    if (!phoneCheck.isValid && phoneCheck.error) {
+      errs.phone = phoneCheck.error;
     }
 
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
