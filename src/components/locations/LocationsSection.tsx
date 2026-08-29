@@ -82,24 +82,39 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                     </p>
                   </div>
 
-                  {/* Address Box */}
-                  <div className="bg-white rounded-2xl p-4 border border-advait-border/80 space-y-2 group-hover:border-advait-blue/30 transition-colors duration-200">
-                    <div className="flex items-start gap-2.5">
-                      <MapPin className="w-5 h-5 text-advait-blue shrink-0 mt-0.5" />
-                      <div className="text-xs sm:text-sm text-advait-navy leading-relaxed">
-                        <p className="font-semibold">{loc.addressLine1}</p>
-                        <p>{loc.addressLine2}</p>
-                        {loc.landmark && <p className="text-advait-text-secondary">{loc.landmark}</p>}
-                        <p className="font-bold text-advait-blue">
-                          {loc.area}, {loc.city} {loc.pincode && `- ${loc.pincode}`}
-                        </p>
+                  {/* Address Box - Clickable Direct Link to Clinic Location */}
+                  <div className="relative group/address">
+                    <a
+                      href={loc.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-white rounded-2xl p-4 border border-advait-border/80 hover:border-advait-blue hover:bg-advait-blue-soft/30 hover:shadow-md transition-all duration-200 cursor-pointer"
+                      title={currentLang === 'en' ? 'Click to open clinic location in Google Maps' : 'गुगल मॅप्सवर क्लिनिकचा पत्ता उघडा'}
+                    >
+                      <div className="flex items-start gap-2.5 pr-20">
+                        <MapPin className="w-5 h-5 text-advait-blue shrink-0 mt-0.5 group-hover/address:scale-110 group-hover/address:text-advait-teal transition-all duration-200" />
+                        <div className="text-xs sm:text-sm text-advait-navy leading-relaxed flex-1">
+                          <p className="font-semibold">{loc.addressLine1}</p>
+                          <p>{loc.addressLine2}</p>
+                          {loc.landmark && <p className="text-advait-text-secondary">{loc.landmark}</p>}
+                          <p className="font-bold text-advait-blue flex items-center gap-1.5 mt-0.5">
+                            <span>{loc.area}, {loc.city} {loc.pincode && `- ${loc.pincode}`}</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/address:text-advait-blue transition-colors" />
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    </a>
 
-                    <div className="pt-2 flex items-center justify-end">
+                    {/* Copy Address Button */}
+                    <div className="absolute bottom-3 right-3 z-10">
                       <button
-                        onClick={() => handleCopyAddress(loc.id, fullAddress)}
-                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 hover:text-advait-blue transition-colors hover:scale-105"
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleCopyAddress(loc.id, fullAddress);
+                        }}
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-white text-[11px] font-semibold text-slate-600 hover:text-advait-blue border border-slate-200 hover:border-advait-blue/30 transition-all hover:scale-105 shadow-2xs"
                         title="Copy full address"
                       >
                         {copiedId === loc.id ? (

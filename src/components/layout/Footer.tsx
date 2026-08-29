@@ -134,12 +134,22 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <div className="space-y-3 text-xs text-slate-300 leading-snug">
               {CLINIC_LOCATIONS.map((loc) => (
-                <div key={loc.id} className="bg-white/5 hover:bg-white/10 rounded-xl p-3 border border-white/5 hover:border-white/15 transition-colors duration-200 space-y-1">
-                  <p className="font-bold text-white text-xs">{loc.name}</p>
+                <a
+                  key={loc.id}
+                  href={loc.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block bg-white/5 hover:bg-white/10 rounded-xl p-3 border border-white/5 hover:border-white/20 transition-all duration-200 space-y-1 group hover:-translate-y-0.5"
+                  title="Click to view on Google Maps"
+                >
+                  <p className="font-bold text-white text-xs group-hover:text-advait-teal-light transition-colors flex items-center justify-between">
+                    <span>{loc.name}</span>
+                    <span className="text-[10px] opacity-70 group-hover:opacity-100">↗</span>
+                  </p>
                   <p className="text-[11px] text-slate-300">
                     {loc.addressLine1} {loc.addressLine2} {loc.area}, {loc.city}
                   </p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
