@@ -61,8 +61,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
   };
 
   const getWhatsAppQuickLink = () => {
-    const text = `Hello Advait Dental Clinic,\nI have a general inquiry:\n• Name: ${formData.name || 'Patient'}\n• Doctor: ${formData.preferredDoctor || 'Any Specialist'}\n• Clinic: ${formData.preferredClinic}\n• Message: ${formData.message || 'I would like more information on dental treatments.'}`;
-    return `https://wa.me/91${PRIMARY_PHONE}?text=${encodeURIComponent(text)}`;
+    const text = [
+      `✨ *DR. SHINDE'S ADVAIT DENTAL CLINIC* ✨`,
+      `_General Patient Inquiry • Nashik_`,
+      `══════════════════════════`,
+      `👤 *PATIENT DETAILS*`,
+      `• *Name:* ${formData.name.trim() || 'Patient'}`,
+      `• *Phone:* ${formData.phone.trim() ? '+91 ' + formData.phone.trim() : 'Not provided'}`,
+      `• *Consulting Doctor:* ${formData.preferredDoctor || 'Any Available Specialist'}`,
+      `• *Preferred Clinic:* ${formData.preferredClinic}`,
+      ``,
+      `💬 *INQUIRY / MESSAGE*`,
+      `• "${formData.message.trim() || 'I would like to inquire about dental treatments and appointments.'}"`,
+      `══════════════════════════`,
+      `🌟 _Sent via Advait Dental Clinic Portal_`,
+    ].join('\n');
+
+    const targetPhone = formData.preferredDoctor?.includes('Mayuree') ? SECONDARY_PHONE : PRIMARY_PHONE;
+    return `https://wa.me/91${targetPhone}?text=${encodeURIComponent(text)}`;
   };
 
   return (
