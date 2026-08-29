@@ -60,13 +60,13 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           {/* Col 1: Brand & Doctor Credentials (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="bg-white/95 p-3 rounded-2xl inline-block shadow-sm">
+            <div className="bg-white p-3 sm:p-3.5 rounded-2xl inline-block shadow-sm">
               <img
-                src="./assets/logo.png"
-                alt="Advait Dental Clinic Logo"
-                className="h-12 w-auto object-contain"
+                src="./assets/footer-logo.png"
+                alt="Dr. Shinde's Advait Multispeciality Dental Clinic and Implant Centre"
+                className="h-12 sm:h-14 w-auto object-contain max-w-full"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = './assets/logo-icon.jpg';
+                  (e.target as HTMLImageElement).src = './assets/logo.png';
                 }}
               />
             </div>
