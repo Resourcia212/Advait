@@ -198,7 +198,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 onClick={onExploreSpecializations}
                 className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-white border border-advait-border hover:bg-advait-bg hover:border-advait-blue/30 text-advait-navy font-bold text-xs shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 active:scale-95"
               >
-                <span>{currentLang === 'en' ? 'Explore Treatments' : 'सर्व उपचार पहा'}</span>
+                <span>{currentLang === 'en' ? 'View Specializations' : 'विशेष तज्ज्ञता पहा'}</span>
               </button>
             </div>
           </div>

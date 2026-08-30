@@ -4,6 +4,7 @@ import { Navbar } from './components/layout/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { AboutSection } from './components/about/AboutSection';
 import { MaxillofacialFeature } from './components/specializations/MaxillofacialFeature';
+import { SmileDesignFeature } from './components/specializations/SmileDesignFeature';
 import { ServicesDirectory } from './components/services/ServicesDirectory';
 import { ServiceModal } from './components/services/ServiceModal';
 import { GallerySection } from './components/gallery/GallerySection';
@@ -62,12 +63,11 @@ export const App: React.FC = () => {
   };
 
   const handleNavigateToSection = (id: string) => {
-    const targetId = id === 'specializations' ? 'services' : id;
     if (currentPage === 'appointment') {
       setCurrentPage('home');
       window.history.replaceState(null, '', ' ');
       setTimeout(() => {
-        const el = document.getElementById(targetId);
+        const el = document.getElementById(id);
         if (el) {
           const navOffset = 80;
           const elementPosition = el.getBoundingClientRect().top;
@@ -78,7 +78,7 @@ export const App: React.FC = () => {
         }
       }, 50);
     } else {
-      const el = document.getElementById(targetId);
+      const el = document.getElementById(id);
       if (el) {
         const navOffset = 80;
         const elementPosition = el.getBoundingClientRect().top;
@@ -143,7 +143,14 @@ export const App: React.FC = () => {
             onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Maxillofacial Prosthesis')}
           />
 
-          {/* Comprehensive Treatments & Services Directory */}
+          {/* Unified Clinical Specialties & Smile Designing Feature */}
+          <SmileDesignFeature
+            currentLang={currentLang}
+            onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Smile Design')}
+            onSelectSpecialization={(spec) => setSelectedModalItem(spec)}
+          />
+
+          {/* Comprehensive Services Directory */}
           <ServicesDirectory
             currentLang={currentLang}
             onSelectService={(service) => setSelectedModalItem(service)}
