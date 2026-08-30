@@ -132,6 +132,12 @@ export const App: React.FC = () => {
             onOpenAppointmentModal={() => handleOpenAppointmentPage()}
           />
 
+          {/* Two Clinic Locations Section */}
+          <LocationsSection
+            currentLang={currentLang}
+            onOpenAppointmentModal={(clinic) => handleOpenAppointmentPage(undefined, clinic)}
+          />
+
           {/* Key Specializations Section */}
           <SpecializationsSection
             currentLang={currentLang}
@@ -160,12 +166,6 @@ export const App: React.FC = () => {
 
           {/* Clinic & Clinical Gallery */}
           <GallerySection currentLang={currentLang} />
-
-          {/* Two Clinic Locations Section */}
-          <LocationsSection
-            currentLang={currentLang}
-            onOpenAppointmentModal={(clinic) => handleOpenAppointmentPage(undefined, clinic)}
-          />
 
           {/* Interactive Query & Contact Section */}
           <ContactSection currentLang={currentLang} />

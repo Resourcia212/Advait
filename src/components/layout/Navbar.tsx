@@ -24,10 +24,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const primaryNavLinks = [
     { id: 'home', labelEn: 'Home', labelMr: 'मुख्यपृष्ठ' },
     { id: 'about', labelEn: 'About', labelMr: 'माहिती' },
+    { id: 'locations', labelEn: 'Locations', labelMr: 'शाखा' },
     { id: 'specializations', labelEn: 'Specializations', labelMr: 'विशेष तज्ज्ञता' },
     { id: 'services', labelEn: 'Services', labelMr: 'सर्व सेवा' },
     { id: 'gallery', labelEn: 'Gallery', labelMr: 'दालन' },
-    { id: 'locations', labelEn: 'Locations', labelMr: 'शाखा' },
     { id: 'contact', labelEn: 'Contact', labelMr: 'संपर्क' },
   ];
 
