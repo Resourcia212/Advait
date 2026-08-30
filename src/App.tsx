@@ -137,17 +137,17 @@ export const App: React.FC = () => {
             onOpenAppointmentModal={(clinic) => handleOpenAppointmentPage(undefined, clinic)}
           />
 
-          {/* Maxillofacial Prosthesis Editorial Feature */}
-          <MaxillofacialFeature
-            currentLang={currentLang}
-            onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Maxillofacial Prosthesis')}
-          />
-
-          {/* Unified Clinical Specialties & Smile Designing Feature */}
+          {/* Unified Clinical Specialties & Smile Designing Section */}
           <SmileDesignFeature
             currentLang={currentLang}
             onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Smile Design')}
             onSelectSpecialization={(spec) => setSelectedModalItem(spec)}
+          />
+
+          {/* Maxillofacial Prosthesis Editorial Feature */}
+          <MaxillofacialFeature
+            currentLang={currentLang}
+            onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Maxillofacial Prosthesis')}
           />
 
           {/* Comprehensive Services Directory */}
