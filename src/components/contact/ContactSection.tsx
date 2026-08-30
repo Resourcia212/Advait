@@ -31,6 +31,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
+  const handleClinicChange = (clinicName: string) => {
+    const isMayureeBranch =
+      clinicName.includes('Shree Ram') || clinicName.includes('Panchavati');
+    setFormData((prev) => ({
+      ...prev,
+      preferredClinic: clinicName,
+      preferredDoctor: isMayureeBranch
+        ? DOCTOR_MAYUREE_INFO.name
+        : DOCTOR_INFO.name,
+    }));
+  };
+
+  const handleDoctorChange = (doctorName: string) => {
+    const isMayuree = doctorName.includes('Mayuree');
+    setFormData((prev) => ({
+      ...prev,
+      preferredDoctor: isMayuree
+        ? DOCTOR_MAYUREE_INFO.name
+        : DOCTOR_INFO.name,
+      preferredClinic: isMayuree
+        ? 'Shree Ram Multi Speciality Clinic (Panchavati)'
+        : 'Advait Multi Speciality Clinic (Indira Nagar)',
+    }));
+  };
+
   const validate = (): boolean => {
     const errs: Partial<Record<keyof ContactFormData, string>> = {};
     
@@ -278,38 +303,40 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                     </label>
                     <select
                       value={formData.preferredClinic}
-                      onChange={(e) => setFormData({ ...formData, preferredClinic: e.target.value })}
-                      className="w-full max-w-full px-3 py-2 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
+                      onChange={(e) => handleClinicChange(e.target.value)}
+                      className="w-full max-w-full px-3 py-2 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                     >
                       <option value="Advait Multi Speciality Clinic (Indira Nagar)">
-                        {currentLang === 'en' ? 'Indira Nagar Branch' : 'इंदिरा नगर शाखा'}
+                        {currentLang === 'en' ? 'Advait Clinic (Indira Nagar) • Dr. Lilesh Shinde' : 'अद्वैत क्लिनिक (इंदिरा नगर) • डॉ. लिलेश शिंदे'}
                       </option>
                       <option value="Shree Ram Multi Speciality Clinic (Panchavati)">
-                        {currentLang === 'en' ? 'Panchavati Branch' : 'पंचवटी शाखा'}
+                        {currentLang === 'en' ? 'Shree Ram Clinic (Panchavati) • Dr. Mayuree Shinde' : 'श्री राम क्लिनिक (पंचवटी) • डॉ. मयुरी शिंदे'}
                       </option>
                     </select>
                   </div>
                 </div>
 
                 {/* Select Doctor / Specialist Required */}
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-advait-navy flex items-center gap-1">
-                    <Stethoscope className="w-3.5 h-3.5 text-advait-blue" />
-                    <span>{currentLang === 'en' ? 'Select Doctor / Specialist *' : 'तज्ज्ञ डॉक्टर निवडा *'}</span>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-advait-navy flex items-center justify-between gap-1">
+                    <span className="flex items-center gap-1">
+                      <Stethoscope className="w-3.5 h-3.5 text-advait-blue" />
+                      <span>{currentLang === 'en' ? 'Assigned Doctor / Specialist *' : 'तज्ज्ञ डॉक्टर निवडा *'}</span>
+                    </span>
+                    <span className="text-[10px] font-normal text-advait-blue bg-advait-blue-soft px-2 py-0.5 rounded-md border border-advait-blue/20">
+                      {currentLang === 'en' ? 'Auto-synced' : 'शाखेशी संलग्न'}
+                    </span>
                   </label>
                   <select
                     value={formData.preferredDoctor}
-                    onChange={(e) => setFormData({ ...formData, preferredDoctor: e.target.value })}
-                    className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
+                    onChange={(e) => handleDoctorChange(e.target.value)}
+                    className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                   >
                     <option value={DOCTOR_INFO.name}>
-                      Dr. Lilesh A. Shinde (Prosthodontist)
+                      Dr. Lilesh A. Shinde — Advait Clinic (Indira Nagar)
                     </option>
                     <option value={DOCTOR_MAYUREE_INFO.name}>
-                      Dr. Mayuree L. Shinde (Cosmetic Dentist)
-                    </option>
-                    <option value="Any Available Doctor">
-                      {currentLang === 'en' ? 'Any Available Doctor' : 'कोणतेही उपलब्ध तज्ज्ञ'}
+                      Dr. Mayuree L. Shinde — Shree Ram Clinic (Panchavati)
                     </option>
                   </select>
                 </div>
