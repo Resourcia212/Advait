@@ -44,6 +44,22 @@
     box-shadow: 0 4px 15px rgba(8, 43, 99, 0.06);
   }
 
+  .glass-navbar {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.58) 100%);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 15px 40px -10px rgba(8, 43, 99, 0.08), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .glass-navbar-scrolled {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.82) 100%);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 50px -12px rgba(8, 43, 99, 0.14), inset 0 1.5px 2px 0 rgba(255, 255, 255, 1);
+  }
+
   /* Continuous Shiny Glass Shimmer Effect */
   @keyframes glass-shine-sweep {
     0% {
