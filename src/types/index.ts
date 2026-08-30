@@ -27,6 +27,13 @@ export interface ClinicLocation {
   clinicNumber: number;
   name: string;
   subname?: string;
+  leadDoctorName: string;
+  leadDoctorDegree: string;
+  leadDoctorRoleEn: string;
+  leadDoctorRoleMr: string;
+  leadDoctorImage: string;
+  leadDoctorPhone: string;
+  leadDoctorDisplayPhone: string;
   addressLine1: string;
   addressLine2: string;
   landmark?: string;

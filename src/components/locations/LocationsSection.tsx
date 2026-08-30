@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Navigation, Copy, Check, ExternalLink, Calendar } from 'lucide-react';
 import { Language } from '../../types';
-import { CLINIC_LOCATIONS, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDARY_PHONE, PRIMARY_PHONE, SECONDARY_PHONE, CLINIC_EMAIL } from '../../data/clinicInfo';
+import { CLINIC_LOCATIONS } from '../../data/clinicInfo';
 
 interface LocationsSectionProps {
   currentLang: Language;
@@ -82,6 +82,42 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                     </p>
                   </div>
 
+                  {/* Lead Doctor Highlight for this Clinic */}
+                  <div className="bg-white rounded-2xl p-3.5 sm:p-4 border border-advait-border/90 shadow-xs flex items-center justify-between gap-3 group-hover:border-advait-blue/30 transition-all duration-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl overflow-hidden bg-advait-blue-soft border border-advait-blue/20 shrink-0 shadow-xs">
+                        <img
+                          src={loc.leadDoctorImage}
+                          alt={loc.leadDoctorName}
+                          className="w-full h-full object-cover object-top"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = './assets/logo-icon.jpg';
+                          }}
+                        />
+                      </div>
+                      <div className="space-y-0.5">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-advait-teal block">
+                          {currentLang === 'en' ? 'Clinic Head & Specialist' : 'शाखा प्रमुख तज्ज्ञ'}
+                        </span>
+                        <h4 className="text-sm sm:text-base font-extrabold text-advait-navy group-hover:text-advait-blue transition-colors">
+                          {loc.leadDoctorName}
+                        </h4>
+                        <p className="text-[11px] text-slate-500 font-semibold leading-tight">
+                          {currentLang === 'en' ? loc.leadDoctorRoleEn : loc.leadDoctorRoleMr}
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href={`tel:${loc.leadDoctorPhone}`}
+                      className="px-3 py-1.5 rounded-xl bg-advait-blue-soft hover:bg-advait-blue text-advait-blue hover:text-white font-bold text-xs border border-advait-blue/20 transition-all duration-200 shrink-0 flex items-center gap-1.5 shadow-xs active:scale-95"
+                      title={`Call ${loc.leadDoctorName}`}
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Call</span>
+                    </a>
+                  </div>
+
                   {/* Address Box - Clickable Direct Link to Clinic Location */}
                   <div className="relative group/address">
                     <a
@@ -136,18 +172,14 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                   <div className="space-y-2 pt-1 text-xs text-advait-navy font-medium">
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-advait-teal" />
-                      <span>Appointments: </span>
-                      <a href={`tel:${PRIMARY_PHONE}`} className="font-bold hover:text-advait-blue transition-colors">
-                        {DISPLAY_PRIMARY_PHONE}
-                      </a>
-                      <span>, </span>
-                      <a href={`tel:${SECONDARY_PHONE}`} className="font-bold hover:text-advait-blue transition-colors">
-                        {DISPLAY_SECONDARY_PHONE}
+                      <span>{currentLang === 'en' ? 'Direct Doctor Line:' : 'थेट संपर्क:'} </span>
+                      <a href={`tel:${loc.leadDoctorPhone}`} className="font-bold hover:text-advait-blue transition-colors">
+                        {loc.leadDoctorDisplayPhone}
                       </a>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-slate-400" />
-                      <span>{CLINIC_EMAIL}</span>
+                      <span>{loc.email}</span>
                     </div>
                   </div>
                 </div>
