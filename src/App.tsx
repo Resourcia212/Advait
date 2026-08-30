@@ -3,9 +3,7 @@ import { Language, ServiceItem, SpecializationCardData } from './types';
 import { Navbar } from './components/layout/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { AboutSection } from './components/about/AboutSection';
-import { SpecializationsSection } from './components/specializations/SpecializationsSection';
 import { MaxillofacialFeature } from './components/specializations/MaxillofacialFeature';
-import { SmileDesignFeature } from './components/specializations/SmileDesignFeature';
 import { ServicesDirectory } from './components/services/ServicesDirectory';
 import { ServiceModal } from './components/services/ServiceModal';
 import { GallerySection } from './components/gallery/GallerySection';
@@ -64,11 +62,12 @@ export const App: React.FC = () => {
   };
 
   const handleNavigateToSection = (id: string) => {
+    const targetId = id === 'specializations' ? 'services' : id;
     if (currentPage === 'appointment') {
       setCurrentPage('home');
       window.history.replaceState(null, '', ' ');
       setTimeout(() => {
-        const el = document.getElementById(id);
+        const el = document.getElementById(targetId);
         if (el) {
           const navOffset = 80;
           const elementPosition = el.getBoundingClientRect().top;
@@ -79,7 +78,7 @@ export const App: React.FC = () => {
         }
       }, 50);
     } else {
-      const el = document.getElementById(id);
+      const el = document.getElementById(targetId);
       if (el) {
         const navOffset = 80;
         const elementPosition = el.getBoundingClientRect().top;
@@ -138,26 +137,13 @@ export const App: React.FC = () => {
             onOpenAppointmentModal={(clinic) => handleOpenAppointmentPage(undefined, clinic)}
           />
 
-          {/* Key Specializations Section */}
-          <SpecializationsSection
-            currentLang={currentLang}
-            onSelectSpecialization={(spec) => setSelectedModalItem(spec)}
-            onOpenAppointmentModal={(serviceName) => handleOpenAppointmentPage(serviceName)}
-          />
-
           {/* Maxillofacial Prosthesis Editorial Feature */}
           <MaxillofacialFeature
             currentLang={currentLang}
             onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Maxillofacial Prosthesis')}
           />
 
-          {/* Smile Design & Cosmetics Feature */}
-          <SmileDesignFeature
-            currentLang={currentLang}
-            onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Smile Design')}
-          />
-
-          {/* Comprehensive Services Directory */}
+          {/* Comprehensive Treatments & Services Directory */}
           <ServicesDirectory
             currentLang={currentLang}
             onSelectService={(service) => setSelectedModalItem(service)}

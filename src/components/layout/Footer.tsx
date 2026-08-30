@@ -48,8 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
     { id: 'home', labelEn: 'Home', labelMr: 'मुख्यपृष्ठ' },
     { id: 'about', labelEn: 'About Advait', labelMr: 'क्लिनिक माहिती' },
     { id: 'locations', labelEn: 'Clinic Locations', labelMr: 'शाखा पत्ते' },
-    { id: 'specializations', labelEn: 'Specializations', labelMr: 'विशेष तज्ज्ञता' },
-    { id: 'services', labelEn: 'Dental Services', labelMr: 'सर्व दंत उपचार' },
+    { id: 'services', labelEn: 'Dental Treatments', labelMr: 'सर्व दंत उपचार' },
     { id: 'gallery', labelEn: 'Gallery', labelMr: 'दालन' },
     { id: 'contact', labelEn: 'Contact Us', labelMr: 'संपर्क' },
   ];
