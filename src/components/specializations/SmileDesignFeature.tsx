@@ -7,11 +7,11 @@ import {
   Layers,
   Activity,
   Hammer,
-  Stethoscope,
-  Wrench,
   Check,
   Calendar,
-  ArrowRight
+  ArrowRight,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { Language, SpecializationCardData } from '../../types';
 
@@ -28,6 +28,7 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
   onOpenAppointmentModal,
 }) => {
   const [activeTab, setActiveTab] = useState<TabType>('all');
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const allSpecialties = [
     // --- Smile Designing & Cosmetic Dentistry ---
@@ -160,44 +161,14 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
       icon: <Hammer className="w-5 h-5 text-advait-blue" />,
       featuresEn: ["Ceramic & Zirconia Crowns", "Multi-Unit Fixed Bridges", "Post & Core Build-up"],
       featuresMr: ["सिरॅमिक व झिरकोनिया", "मजबूत फिक्स ब्रीज", "पोस्ट आणि कोअर"]
-    },
-    {
-      id: "tmj-splints",
-      category: "prosthodontics" as const,
-      categoryLabelEn: "Specialized Care",
-      categoryLabelMr: "विशेष सांधे उपचार",
-      titleEn: "TMJ Disorders & Occlusal Splints",
-      titleMr: "TMJ दोष : निदान व उपचार",
-      subtitleEn: "Jaw Joint Care",
-      subtitleMr: "जबड्याच्या सांध्याचे दुखणे",
-      badge: "Joint Therapy",
-      descEn: "Accurate diagnosis and therapeutic management of temporomandibular joint pain, clicking, and teeth grinding (bruxism) using milled splints.",
-      descMr: "जबड्याच्या सांध्याचे दुखणे, आवाज येणे, दात खाणे या विकारांवर अचूक निदान व फॅब्रिकेटेड मिल्ड स्प्लिंट्सद्वारे उपचार.",
-      icon: <Stethoscope className="w-5 h-5 text-advait-teal" />,
-      featuresEn: ["Fabricated Milled Splints", "Bruxism Management", "Jaw Pain Relief"],
-      featuresMr: ["मिल्ड स्प्लिंट्स", "दात खाणे नियंत्रण", "सांधेदुखी सुधारणा"]
-    },
-    {
-      id: "post-and-core",
-      category: "prosthodontics" as const,
-      categoryLabelEn: "Restorative",
-      categoryLabelMr: "दातांचा पाया",
-      titleEn: "Post & Core Restorations",
-      titleMr: "पोस्ट आणि कोअर (Post & Core)",
-      subtitleEn: "Structural Foundation",
-      subtitleMr: "पायाभूत मजबुती",
-      badge: "Foundation",
-      descEn: "Endodontic post placement within root canal treated teeth to rebuild severely broken-down crown structure prior to final crown placement.",
-      descMr: "खूप जास्त खराब झालेल्या किंवा तुटलेल्या दातांना मुळापासून मजबुती देऊन क्राउन बसवण्यासाठी आधार तयार करणे.",
-      icon: <Wrench className="w-5 h-5 text-advait-blue-light" />,
-      featuresEn: ["Fiber Post Reinforcement", "Core Build-up Structure", "Crown Retention"],
-      featuresMr: ["फायबर पोस्ट मजबुती", "कोअर स्ट्रक्चर पुनर्रचना", "दीर्घकाळ क्राउन आधार"]
     }
   ];
 
   const filteredSpecialties = activeTab === 'all'
     ? allSpecialties
     : allSpecialties.filter((item) => item.category === activeTab);
+
+  const displayedSpecialties = isExpanded ? filteredSpecialties : filteredSpecialties.slice(0, 4);
 
   return (
     <section id="specializations" className="py-16 sm:py-20 bg-white relative">
@@ -230,7 +201,9 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
           {/* Interactive Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
             <button
-              onClick={() => setActiveTab('all')}
+              onClick={() => {
+                setActiveTab('all');
+              }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs ${
                 activeTab === 'all'
                   ? 'bg-advait-navy text-white shadow-xs scale-105'
@@ -241,7 +214,9 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
             </button>
 
             <button
-              onClick={() => setActiveTab('cosmetic')}
+              onClick={() => {
+                setActiveTab('cosmetic');
+              }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs flex items-center gap-1.5 ${
                 activeTab === 'cosmetic'
                   ? 'bg-advait-teal text-white shadow-xs scale-105'
@@ -253,7 +228,9 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
             </button>
 
             <button
-              onClick={() => setActiveTab('prosthodontics')}
+              onClick={() => {
+                setActiveTab('prosthodontics');
+              }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs flex items-center gap-1.5 ${
                 activeTab === 'prosthodontics'
                   ? 'bg-advait-blue text-white shadow-xs scale-105'
@@ -267,8 +244,8 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {filteredSpecialties.map((item) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {displayedSpecialties.map((item) => (
             <div
               key={item.id}
               className="bg-advait-bg rounded-2xl p-5 sm:p-6 border border-advait-border hover:border-advait-blue/50 shadow-soft hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
@@ -332,6 +309,32 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
             </div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {filteredSpecialties.length > 4 && (
+          <div className="text-center pt-10">
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border-2 border-advait-blue text-advait-blue hover:bg-advait-blue hover:text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 group"
+            >
+              {isExpanded ? (
+                <>
+                  <span>{currentLang === 'en' ? 'Show Less' : 'कमी उपचार दाखवा'}</span>
+                  <ChevronUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                </>
+              ) : (
+                <>
+                  <span>
+                    {currentLang === 'en'
+                      ? `Show More Specialties (+${filteredSpecialties.length - 4} more)`
+                      : `अधिक विशेष उपचार पहा (+${filteredSpecialties.length - 4} अधिक)`}
+                  </span>
+                  <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
