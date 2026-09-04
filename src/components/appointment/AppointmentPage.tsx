@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, User, Phone, Mail, MapPin, Clock, FileText, ShieldCheck, Sparkles, Stethoscope, ArrowLeft } from 'lucide-react';
+import { Calendar, User, Phone, Mail, MapPin, Clock, FileText, ShieldCheck, Sparkles, Stethoscope, ArrowLeft, Navigation } from 'lucide-react';
 import { AppointmentFormData, Language } from '../../types';
-import { PRIMARY_PHONE, SECONDARY_PHONE, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDARY_PHONE, DOCTOR_INFO, DOCTOR_MAYUREE_INFO } from '../../data/clinicInfo';
+import { PRIMARY_PHONE, SECONDARY_PHONE, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDARY_PHONE, CLINIC_EMAIL, DOCTOR_INFO, DOCTOR_MAYUREE_INFO } from '../../data/clinicInfo';
 import { BookingConfirmation } from './BookingConfirmation';
 import { redirectToDoctorWhatsApp } from '../../lib/whatsapp';
 import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
@@ -215,6 +215,68 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                   <p className="text-[11px] text-teal-100 font-semibold">{DOCTOR_MAYUREE_INFO.specialization}</p>
                   <p className="text-[10px] text-slate-300">{DOCTOR_MAYUREE_INFO.degrees}</p>
                 </div>
+              </div>
+
+              {/* Clinic Directions & Official Email */}
+              <div className="space-y-2 pt-2 border-t border-white/10 relative z-10">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-advait-teal-light block">
+                  {currentLang === 'en' ? 'Get Directions & Clinic Email' : 'दिशानिर्देश व संपर्क ईमेल'}
+                </span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Advait+Multispeciality+Dental+Clinic+and+Implant+Centre+Plot+No+20-A+Chandrabhaga+Geetanjali+Colony+Indira+Nagar+Nashik+Maharashtra+422009"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-xs group"
+                    title="Get Directions to Advait Clinic (Indira Nagar)"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Navigation className="w-3.5 h-3.5 text-advait-teal-light shrink-0 group-hover:scale-110 transition-transform" />
+                      <div className="truncate text-left">
+                        <span className="font-bold text-white block text-[11px] truncate">Advait Clinic</span>
+                        <span className="text-[10px] text-slate-300 block truncate">Indira Nagar</span>
+                      </div>
+                    </div>
+                    <span className="text-[9px] font-bold text-advait-teal-light bg-white/10 px-1.5 py-0.5 rounded border border-white/15 group-hover:bg-advait-teal group-hover:text-advait-navy transition-colors shrink-0">
+                      Maps ↗
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Shree+Ram+Multi+Speciality+Dental+Clinic+Shop+No+01+Near+SBI+Bank+Jatra+Hotel+Chaufali+Adgaon+Shivar+Panchavati+Nashik+Maharashtra+422003"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-xs group"
+                    title="Get Directions to Shree Ram Clinic (Panchavati)"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Navigation className="w-3.5 h-3.5 text-advait-teal-light shrink-0 group-hover:scale-110 transition-transform" />
+                      <div className="truncate text-left">
+                        <span className="font-bold text-white block text-[11px] truncate">Shree Ram Clinic</span>
+                        <span className="text-[10px] text-slate-300 block truncate">Panchavati</span>
+                      </div>
+                    </div>
+                    <span className="text-[9px] font-bold text-advait-teal-light bg-white/10 px-1.5 py-0.5 rounded border border-white/15 group-hover:bg-advait-teal group-hover:text-advait-navy transition-colors shrink-0">
+                      Maps ↗
+                    </span>
+                  </a>
+                </div>
+
+                {/* Email Inquiries */}
+                <a
+                  href={`mailto:${CLINIC_EMAIL}`}
+                  className="flex items-center justify-between p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-xs group"
+                  title="Send Email Inquiry"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <Mail className="w-3.5 h-3.5 text-advait-teal-light shrink-0" />
+                    <span className="text-[11px] text-slate-200 truncate">{CLINIC_EMAIL}</span>
+                  </div>
+                  <span className="text-[9px] font-bold text-advait-teal-light bg-white/10 px-1.5 py-0.5 rounded border border-white/15 group-hover:bg-advait-teal group-hover:text-advait-navy transition-colors shrink-0">
+                    Email ↗
+                  </span>
+                </a>
               </div>
 
               {/* Clinic Guarantees & Features */}
