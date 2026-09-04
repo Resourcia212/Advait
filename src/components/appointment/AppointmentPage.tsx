@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, Phone, Mail, MapPin, Clock, FileText, ShieldCheck, Sparkles, Stethoscope, ArrowLeft } from 'lucide-react';
 import { AppointmentFormData, Language } from '../../types';
-import { PRIMARY_PHONE, SECONDARY_PHONE, DOCTOR_INFO, DOCTOR_MAYUREE_INFO } from '../../data/clinicInfo';
+import { PRIMARY_PHONE, SECONDARY_PHONE, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDARY_PHONE, DOCTOR_INFO, DOCTOR_MAYUREE_INFO } from '../../data/clinicInfo';
 import { BookingConfirmation } from './BookingConfirmation';
 import { redirectToDoctorWhatsApp } from '../../lib/whatsapp';
 import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
@@ -125,8 +125,10 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
 
   const isMayureeActive =
     formData.preferredDoctor?.includes('Mayuree') ||
+    formData.preferredDoctor?.includes('मयुरी') ||
     formData.preferredClinic?.includes('Shree Ram') ||
-    formData.preferredClinic?.includes('Panchavati');
+    formData.preferredClinic?.includes('Panchavati') ||
+    formData.preferredClinic?.includes('Adgaon');
 
   return (
     <div className="min-h-screen bg-linear-to-b from-[#F0F7FF] to-white pt-24 pb-20">
@@ -142,112 +144,127 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
           </button>
         </div>
 
-        {/* Two-column layout: Info on left, Form on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Clinic Info & Trust Highlights */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-advait-blue-soft border border-advait-blue/20 text-advait-blue text-xs font-bold uppercase tracking-wider">
-                <Calendar className="w-3.5 h-3.5 text-advait-teal" />
-                <span>{currentLang === 'en' ? 'ONLINE BOOKING' : 'ऑनलाइन अपॉइंटमेंट'}</span>
+        {/* Unified Two-column card container matching AppointmentSection */}
+        <div className="bg-white rounded-3xl border border-advait-border shadow-card overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            {/* Left Column: Reassurance & Official Clinic Details */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-[#082B63] via-[#0757C9] to-[#063B82] p-6 sm:p-8 lg:p-9 text-white flex flex-col justify-between space-y-6 relative overflow-hidden">
+              {/* Subtle background ambient light */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-advait-teal/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header section */}
+              <div className="space-y-3 relative z-10">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-advait-teal-light text-[11px] font-bold uppercase tracking-wider">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{currentLang === 'en' ? 'EFFORTLESS BOOKING' : 'सुलभ अपॉइंटमेंट'}</span>
+                  </div>
+                  <span className="text-[11px] font-bold text-teal-200/90 tracking-wide">
+                    ॥ श्री स्वामी समर्थ ॥
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-extrabold text-white leading-tight tracking-tight">
+                  {currentLang === 'en' ? (
+                    <>
+                      Schedule Your <br />
+                      <span className="text-advait-teal-light">Dental Consultation</span>
+                    </>
+                  ) : (
+                    <>
+                      तुमच्या भेटीची <br />
+                      <span className="text-advait-teal-light">वेळ निश्चित करा</span>
+                    </>
+                  )}
+                </h2>
+
+                <p className="text-xs text-slate-200 leading-relaxed font-normal">
+                  {currentLang === 'en'
+                    ? 'Our clinic team will promptly confirm your appointment slot and ensure personalized, compassionate specialist attention in Nashik.'
+                    : 'आमची टीम आपल्या वेळेनुसार खात्री करून वैयक्तिक व सहानुभूतीपूर्वक उपचारांचे नियोजन करेल.'}
+                </p>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-advait-navy tracking-tight leading-tight">
-                {currentLang === 'en' ? (
-                  <>
-                    Book Your <span className="gradient-text-blue">Dental Consultation</span>
-                  </>
-                ) : (
-                  <>
-                    आपली <span className="gradient-text-blue">दंत तपासणी</span> आरक्षित करा
-                  </>
-                )}
-              </h1>
+              {/* Both Doctors Mini Credential Cards */}
+              <div className="space-y-2.5 relative z-10">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-advait-teal-light block">
+                  {currentLang === 'en' ? 'Consulting Specialists' : 'तज्ज्ञ दंतचिकित्सक'}
+                </span>
 
-              <p className="text-sm text-advait-text-secondary leading-relaxed">
-                {currentLang === 'en'
-                  ? 'Consult with Dr. Lilesh A. Shinde (MDS Prosthodontist & Implantologist) or Dr. Mayuree L. Shinde (Smile Makeover Specialist) across our modern Nashik clinics.'
-                  : 'डॉ. लिलेश शिंदे (MDS प्रोस्थोडॉन्टिक्स व इम्प्लांट्स) किंवा डॉ. मयुरी शिंदे (स्माईल मेकओव्हर तज्ज्ञ) यांच्याकडून दर्जेदार उपचारांसाठी वेळ निश्चित करा.'}
-              </p>
-            </div>
-
-            {/* Doctor Contact Cards */}
-            <div className="space-y-3">
-              {/* Dr. Lilesh Card */}
-              <div className="p-4 rounded-2xl bg-white border border-advait-border shadow-xs hover:border-advait-blue/40 transition-all flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-advait-blue-soft border border-advait-blue/20 overflow-hidden shrink-0">
-                    <img
-                      src="./assets/dr-lilesh-shinde.png"
-                      alt="Dr. Lilesh Shinde"
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = './assets/logo-icon.jpg';
-                      }}
-                    />
+                {/* Dr. Lilesh */}
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 space-y-1 hover:bg-white/15 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold text-white">{DOCTOR_INFO.name}</span>
+                    <span className="text-[10px] font-bold text-advait-teal-light bg-advait-teal/20 px-2 py-0.5 rounded border border-advait-teal/30">
+                      Reg. {DOCTOR_INFO.registrationNo}
+                    </span>
                   </div>
-                  <div>
-                    <h2 className="text-sm font-bold text-advait-navy">{DOCTOR_INFO.name}</h2>
-                    <p className="text-[11px] text-advait-teal font-semibold">M.D.S. Prosthodontist & Implantologist</p>
-                    <p className="text-[10px] text-slate-500">Advait Multi Speciality Clinic (Indira Nagar)</p>
+                  <p className="text-[11px] text-teal-100 font-semibold">{DOCTOR_INFO.specialization}</p>
+                  <p className="text-[10px] text-slate-300">{DOCTOR_INFO.degrees}</p>
+                </div>
+
+                {/* Dr. Mayuree */}
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15 space-y-1 hover:bg-white/15 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold text-white">{DOCTOR_MAYUREE_INFO.name}</span>
+                    <span className="text-[10px] font-bold text-advait-teal-light bg-advait-teal/20 px-2 py-0.5 rounded border border-advait-teal/30">
+                      Reg. {DOCTOR_MAYUREE_INFO.registrationNo}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-teal-100 font-semibold">{DOCTOR_MAYUREE_INFO.specialization}</p>
+                  <p className="text-[10px] text-slate-300">{DOCTOR_MAYUREE_INFO.degrees}</p>
+                </div>
+              </div>
+
+              {/* Clinic Guarantees & Features */}
+              <div className="space-y-2.5 pt-2 border-t border-white/10 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-200">
+                  <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <ShieldCheck className="w-4 h-4 text-advait-green shrink-0" />
+                    <span className="text-[11px] leading-tight">{currentLang === 'en' ? 'Strict Sterilization' : 'कडक निर्जंतुकीकरण'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <Sparkles className="w-4 h-4 text-advait-teal-light shrink-0" />
+                    <span className="text-[11px] leading-tight">{currentLang === 'en' ? 'M.D.S. Diagnosis' : 'M.D.S. अचूक निदान'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <MapPin className="w-4 h-4 text-advait-green shrink-0" />
+                    <span className="text-[11px] leading-tight">{currentLang === 'en' ? '2 Nashik Branches' : '२ नाशिक शाखा'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                    <Clock className="w-4 h-4 text-advait-teal-light shrink-0" />
+                    <span className="text-[11px] leading-tight">{currentLang === 'en' ? '10 AM - 8:30 PM' : 'सकाळी १० ते रात्री ८:३०'}</span>
                   </div>
                 </div>
-                <a
-                  href={`tel:${PRIMARY_PHONE}`}
-                  className="px-3 py-1.5 rounded-xl bg-advait-blue-soft text-advait-blue hover:bg-advait-blue hover:text-white font-bold text-xs border border-advait-blue/20 transition-all shrink-0"
-                >
-                  Call
-                </a>
               </div>
 
-              {/* Dr. Mayuree Card */}
-              <div className="p-4 rounded-2xl bg-white border border-advait-border shadow-xs hover:border-advait-blue/40 transition-all flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-advait-blue-soft border border-advait-blue/20 overflow-hidden shrink-0">
-                    <img
-                      src="./assets/dr-team-consultant.png"
-                      alt="Dr. Mayuree Shinde"
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = './assets/logo-icon.jpg';
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="text-sm font-bold text-advait-navy">{DOCTOR_MAYUREE_INFO.name}</h2>
-                    <p className="text-[11px] text-advait-teal font-semibold">B.D.S. Smile Makeover Specialist</p>
-                    <p className="text-[10px] text-slate-500">Shree Ram Multi Speciality Clinic (Panchavati)</p>
-                  </div>
+              {/* Direct Telephone Booking */}
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 space-y-2.5 relative z-10">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-teal-200 block">
+                  {currentLang === 'en' ? 'Direct Telephone Booking & Helpline' : 'थेट फोनवर वेळ बुक करा'}
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <a
+                    href={`tel:${PRIMARY_PHONE}`}
+                    className="flex flex-col p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all group"
+                  >
+                    <span className="text-[10px] text-slate-300">Dr. Lilesh (Prosthodontist):</span>
+                    <span className="font-extrabold text-white group-hover:text-advait-teal-light text-xs mt-0.5">{DISPLAY_PRIMARY_PHONE}</span>
+                  </a>
+                  <a
+                    href={`tel:${SECONDARY_PHONE}`}
+                    className="flex flex-col p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all group"
+                  >
+                    <span className="text-[10px] text-slate-300">Dr. Mayuree (Cosmetic):</span>
+                    <span className="font-extrabold text-white group-hover:text-advait-teal-light text-xs mt-0.5">{DISPLAY_SECONDARY_PHONE}</span>
+                  </a>
                 </div>
-                <a
-                  href={`tel:${SECONDARY_PHONE}`}
-                  className="px-3 py-1.5 rounded-xl bg-advait-blue-soft text-advait-blue hover:bg-advait-blue hover:text-white font-bold text-xs border border-advait-blue/20 transition-all shrink-0"
-                >
-                  Call
-                </a>
               </div>
             </div>
 
-            {/* Clinic Highlights Strip */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="p-3 rounded-xl bg-white border border-advait-border shadow-2xs flex items-center gap-2.5">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                <span className="text-xs font-semibold text-advait-navy">
-                  {currentLang === 'en' ? 'Sterilized Environment' : '१००% निर्जंतुकीकरण'}
-                </span>
-              </div>
-              <div className="p-3 rounded-xl bg-white border border-advait-border shadow-2xs flex items-center gap-2.5">
-                <Sparkles className="w-5 h-5 text-advait-teal shrink-0" />
-                <span className="text-xs font-semibold text-advait-navy">
-                  {currentLang === 'en' ? '2 Nashik Locations' : '२ नाशिक शाखा'}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Appointment Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-advait-border shadow-card">
+            {/* Right Column: Appointment Form */}
+            <div className="lg:col-span-7 p-6 sm:p-10">
               {isSubmitted ? (
                 <BookingConfirmation
                   data={formData}
