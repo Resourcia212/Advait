@@ -106,8 +106,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="text-base sm:text-lg font-extrabold tracking-tight text-advait-navy leading-none">
                 ADVAIT
               </span>
-              <span className="text-[10px] sm:text-[11px] font-bold text-advait-teal tracking-wide uppercase mt-1 leading-none">
-                Dental & Implant Centre
+              <span className="text-[9px] sm:text-[10px] font-bold text-advait-teal tracking-wider uppercase mt-1 leading-none whitespace-nowrap">
+                Dental Clinic & Implant Center
               </span>
             </div>
           </button>
@@ -201,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2 h-2 rounded-full bg-advait-teal animate-pulse" />
                   <span className="text-[10px] font-black text-advait-teal uppercase tracking-wider">
-                    {currentLang === 'en' ? 'Advait Dental & Implant Centre' : 'अद्वैत डेंटल आणि इम्प्लांट सेंटर'}
+                    {currentLang === 'en' ? 'Advait Dental Clinic & Implant Center' : 'अद्वैत डेंटल क्लिनिक आणि इम्प्लांट सेंटर'}
                   </span>
                 </div>
                 <p className="text-xs font-bold text-advait-navy">
