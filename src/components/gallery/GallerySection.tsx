@@ -22,7 +22,7 @@ const GalleryCard: React.FC<{
   }, [item]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
+    let interval: ReturnType<typeof setTimeout> | null = null;
     if (isHovered && allImages.length > 1) {
       interval = setInterval(() => {
         setImageIndex((prev) => (prev + 1) % allImages.length);

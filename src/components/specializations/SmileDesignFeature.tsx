@@ -13,12 +13,11 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
-import { Language, SpecializationCardData } from '../../types';
+import { Language } from '../../types';
 
 interface SmileDesignFeatureProps {
   currentLang: Language;
   onOpenAppointmentModal: (reason?: string) => void;
-  onSelectSpecialization?: (spec: SpecializationCardData) => void;
 }
 
 type TabType = 'all' | 'cosmetic' | 'prosthodontics';

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { X, CheckCircle2, Shield, Calendar, Phone, ArrowRight } from 'lucide-react';
-import { Language, ServiceItem, SpecializationCardData } from '../../types';
+import { Language, ServiceItem } from '../../types';
 import { PRIMARY_PHONE, DISPLAY_PRIMARY_PHONE } from '../../data/clinicInfo';
 
 interface ServiceModalProps {
-  item: ServiceItem | SpecializationCardData | null;
+  item: ServiceItem | null;
   isOpen: boolean;
   onClose: () => void;
   currentLang: Language;
@@ -34,24 +34,13 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({
 
   if (!isOpen || !item) return null;
 
-  const isService = 'category' in item && 'shortDescription' in item;
-  const serviceItem = isService ? (item as ServiceItem) : null;
-  const specItem = !isService ? (item as SpecializationCardData) : null;
+  const title = currentLang === 'en' ? item.name : item.nameMarathi;
+  const description = item.fullDescription
+    ? (currentLang === 'en' ? item.fullDescription.en : item.fullDescription.mr)
+    : (currentLang === 'en' ? item.shortDescription.en : item.shortDescription.mr);
 
-  const title = currentLang === 'en'
-    ? (serviceItem ? serviceItem.name : specItem?.title || '')
-    : (serviceItem ? serviceItem.nameMarathi : specItem?.titleMarathi || '');
-  const description = isService
-    ? ((item as ServiceItem).fullDescription ? (currentLang === 'en' ? (item as ServiceItem).fullDescription.en : (item as ServiceItem).fullDescription.mr) : (currentLang === 'en' ? (item as any).shortDescription.en : (item as any).shortDescription.mr))
-    : (currentLang === 'en' ? item.description.en : item.description.mr);
-
-  const indications = isService
-    ? (currentLang === 'en' ? (item as ServiceItem).indications?.en : (item as ServiceItem).indications?.mr)
-    : (currentLang === 'en' ? (item as SpecializationCardData).subItems?.map(s => s.en) : (item as SpecializationCardData).subItems?.map(s => s.mr));
-
-  const highlights = isService
-    ? (currentLang === 'en' ? (item as ServiceItem).keyHighlights?.en : (item as ServiceItem).keyHighlights?.mr)
-    : [];
+  const indications = currentLang === 'en' ? item.indications?.en : item.indications?.mr;
+  const highlights = currentLang === 'en' ? item.keyHighlights?.en : item.keyHighlights?.mr;
 
   return (
     <div

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Language, ServiceItem, SpecializationCardData } from './types';
+import { Language, ServiceItem } from './types';
 import { Navbar } from './components/layout/Navbar';
 import { HeroSection } from './components/hero/HeroSection';
 import { AboutSection } from './components/about/AboutSection';
@@ -29,8 +29,8 @@ export const App: React.FC = () => {
   const [appointmentInitialReason, setAppointmentInitialReason] = useState<string>('');
   const [appointmentInitialClinic, setAppointmentInitialClinic] = useState<string>('');
 
-  // Service / Specialization Detail Modal State
-  const [selectedModalItem, setSelectedModalItem] = useState<ServiceItem | SpecializationCardData | null>(null);
+  // Service Detail Modal State
+  const [selectedModalItem, setSelectedModalItem] = useState<ServiceItem | null>(null);
 
   // Legal Modal State
   const [legalModalType, setLegalModalType] = useState<LegalModalType>(null);
@@ -141,7 +141,6 @@ export const App: React.FC = () => {
           <SmileDesignFeature
             currentLang={currentLang}
             onOpenAppointmentModal={(reason) => handleOpenAppointmentPage(reason || 'Smile Design')}
-            onSelectSpecialization={(spec) => setSelectedModalItem(spec)}
           />
 
           {/* Maxillofacial Prosthesis Editorial Feature */}

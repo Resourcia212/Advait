@@ -73,13 +73,10 @@ export interface ServiceItem {
 }
 
 export type ServiceCategory = 
-  | 'preventive-general'
-  | 'restorative'
-  | 'cosmetic'
-  | 'prosthodontics'
   | 'implantology'
   | 'maxillofacial'
-  | 'tmj-other';
+  | 'cosmetic'
+  | 'restorative';
 
 export interface CategoryInfo {
   id: ServiceCategory;
@@ -90,24 +87,6 @@ export interface CategoryInfo {
     en: string;
     mr: string;
   };
-}
-
-export interface SpecializationCardData {
-  id: string;
-  title: string;
-  titleMarathi: string;
-  subtitle: string;
-  description: {
-    en: string;
-    mr: string;
-  };
-  subItems?: {
-    en: string;
-    mr: string;
-  }[];
-  iconName: string;
-  badge?: string;
-  category: string;
 }
 
 export interface MaxillofacialProsthesisItem {

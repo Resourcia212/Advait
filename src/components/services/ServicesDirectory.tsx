@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import {
   Search,
   Sparkles,
-  Shield,
   Hammer,
   Layers,
   ShieldCheck,
@@ -75,7 +74,6 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
       case 'maxillofacial': return <UserCheck {...props} />;
       case 'cosmetic': return <Sparkles {...props} />;
       case 'restorative': return <Hammer {...props} />;
-      case 'preventive-general': return <Shield {...props} />;
       default: return <Sparkles {...props} />;
     }
   };

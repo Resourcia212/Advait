@@ -13,9 +13,6 @@ export const DR_LILESH_DISPLAY_PHONE = "+91 94058 14675";
 export const DR_MAYUREE_PHONE = "7769927930";
 export const DR_MAYUREE_DISPLAY_PHONE = "+91 77699 27930";
 
-export const CLINIC_SECONDARY_PHONE = "9270724787";
-export const CLINIC_SECONDARY_DISPLAY_PHONE = "+91 92707 24787";
-
 export const PRIMARY_PHONE = DR_LILESH_PHONE;
 export const DISPLAY_PRIMARY_PHONE = DR_LILESH_DISPLAY_PHONE;
 export const SECONDARY_PHONE = DR_MAYUREE_PHONE;
@@ -88,11 +85,6 @@ export const DOCTOR_MAYUREE_INFO = {
   }
 };
 
-export const CLINIC_DOCTORS = [
-  DOCTOR_INFO,
-  DOCTOR_MAYUREE_INFO
-];
-
 export const CLINIC_LOCATIONS: ClinicLocation[] = [
   {
     id: "clinic-1",
@@ -139,52 +131,5 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     email: "lileshshinde101@gmail.com",
     mapLink: "https://www.google.com/maps/dir/?api=1&destination=Shree+Ram+Multi+Speciality+Dental+Clinic+Shop+No+01+Near+SBI+Bank+Jatra+Hotel+Chaufali+Adgaon+Shivar+Panchavati+Nashik+Maharashtra+422003",
     badge: "Speciality Dental Care Centre"
-  }
-];
-
-export const TRUST_STRIP_ITEMS = [
-  {
-    icon: "Award",
-    title: {
-      en: "Specialized Prosthodontic Care",
-      mr: "विशेष प्रोस्थोडॉन्टिक्स उपचार"
-    },
-    description: {
-      en: "M.D.S. specialized prosthodontic diagnostics, smile reconstruction & full mouth rehab.",
-      mr: "M.D.S. पदवीधारक विशेष तज्ज्ञांकडून प्रोस्थोडॉन्टिक उपचार व संपूर्ण मुख पुनर्रचना."
-    }
-  },
-  {
-    icon: "ShieldCheck",
-    title: {
-      en: "Dental Implant Expertise",
-      mr: "अचूक दंत रोपण (इम्प्लांट्स)"
-    },
-    description: {
-      en: "Single-tooth to full-arch implant solutions and implant-supported overdentures.",
-      mr: "एका दातापासून ते संपूर्ण जबड्याचे आधुनिक दंत रोपण व ओव्हरडेंचर्स."
-    }
-  },
-  {
-    icon: "Layers",
-    title: {
-      en: "Comprehensive Dental Treatments",
-      mr: "सर्वसमावेशक दंत उपचार"
-    },
-    description: {
-      en: "All general, restorative, surgical, and cosmetic dental treatments under one roof.",
-      mr: "प्राथमिक, सौंदर्यात्मक, शस्त्रक्रिया आणि सर्व दंतोपचार एकाच छताखाली."
-    }
-  },
-  {
-    icon: "HeartHandshake",
-    title: {
-      en: "Patient-Centered Care",
-      mr: "रुग्ण-केंद्रित उपचार"
-    },
-    description: {
-      en: "Strict sterilization standards with compassionate, personalized patient attention.",
-      mr: "कडक निर्जंतुकीकरण मानके आणि सहानुभूतीपूर्वक वैयक्तिक काळजी."
-    }
   }
 ];
