@@ -362,13 +362,13 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                       >
                         <option value="Advait Multi Speciality Clinic, Indira Nagar">
                           {currentLang === 'en'
-                            ? 'Advait Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar • Dr. Lilesh Shinde'
-                            : 'अद्वैत क्लिनिक, शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर • डॉ. लिलेश शिंदे'}
+                            ? 'Advait Clinic, Indira Nagar • Dr. Lilesh Shinde'
+                            : 'अद्वैत क्लिनिक, इंदिरा नगर • डॉ. लिलेश शिंदे'}
                         </option>
                         <option value="Shree Ram Multi Speciality Clinic, Adgaon Shivar">
                           {currentLang === 'en'
-                            ? 'Shree Ram Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar • Dr. Mayuree Shinde'
-                            : 'श्री राम क्लिनिक, एसबीआय बँके जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार • डॉ. मयुरी शिंदे'}
+                            ? 'Shree Ram Clinic, Adgaon Shivar • Dr. Mayuree Shinde'
+                            : 'श्री राम क्लिनिक, आडगाव शिवार • डॉ. मयुरी शिंदे'}
                         </option>
                       </select>
                     </div>
@@ -391,24 +391,24 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                       className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                     >
                       <option value={DOCTOR_INFO.name}>
-                        Dr. Lilesh A. Shinde — Advait Multi Speciality Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar
+                        Dr. Lilesh A. Shinde — Advait Clinic, Indira Nagar
                       </option>
                       <option value={DOCTOR_MAYUREE_INFO.name}>
-                        Dr. Mayuree L. Shinde — Shree Ram Multi Speciality Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar
+                        Dr. Mayuree L. Shinde — Shree Ram Clinic, Adgaon Shivar
                       </option>
                     </select>
 
                     {/* Auto-Assignment Notification Pill */}
-                    <div className="flex items-center gap-2 p-2 rounded-xl bg-advait-blue-soft/60 border border-advait-blue/20 text-[11px] text-advait-navy">
-                      <span className="font-bold text-advait-blue shrink-0">ℹ️ {currentLang === 'en' ? 'Branch Doctor:' : 'शाखा प्रमुख:'}</span>
-                      <span className="truncate">
+                    <div className="flex items-start gap-2 p-2.5 rounded-xl bg-advait-blue-soft/70 border border-advait-blue/20 text-[11px] text-advait-navy">
+                      <span className="font-bold text-advait-blue shrink-0 mt-0.5">ℹ️ {currentLang === 'en' ? 'Address:' : 'पत्ता:'}</span>
+                      <span className="leading-relaxed">
                         {formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Adgaon') || formData.preferredDoctor?.includes('Mayuree')
                           ? currentLang === 'en'
-                            ? 'Dr. Mayuree L. Shinde heads Shree Ram Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar.'
-                            : 'डॉ. मयुरी शिंदे या श्री राम क्लिनिक (एसबीआय बँके जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार) येथील प्रमुख आहेत.'
+                            ? 'Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Nashik - 422003 (Dr. Mayuree Shinde)'
+                            : 'श्री राम मल्टी स्पेशालिटी क्लिनिक, शॉप नं. ०१, तळमजला, एसबीआय बँक व स्वागत स्वीट्स जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार, नाशिक - ४२२००३ (डॉ. मयुरी शिंदे)'
                           : currentLang === 'en'
-                            ? 'Dr. Lilesh A. Shinde heads Advait Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar.'
-                            : 'डॉ. लिलेश शिंदे हे अद्वैत क्लिनिक (शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर) येथील प्रमुख आहेत.'}
+                            ? 'Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009 (Dr. Lilesh Shinde)'
+                            : 'अद्वैत मल्टी स्पेशालिटी क्लिनिक, प्लॉट नं. २०-ए, चंद्रभागा, शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर, नाशिक - ४२२००९ (डॉ. लिलेश शिंदे)'}
                       </span>
                     </div>
                   </div>
