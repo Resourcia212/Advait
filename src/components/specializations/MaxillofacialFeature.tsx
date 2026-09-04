@@ -58,14 +58,14 @@ export const MaxillofacialFeature: React.FC<MaxillofacialFeatureProps> = ({
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
             {currentLang === 'en'
-              ? 'Providing restorative prosthetic rehabilitation for facial and cranial defects arising from congenital conditions, oncological surgery, or traumatic injury with utmost clinical dignity and artistry.'
+              ? 'Providing restorative prosthetic rehabilitation for facial, oral, and digit defects arising from congenital conditions, oncological surgery, or traumatic injury with utmost clinical dignity and artistry.'
               : 'जन्मजात व्यंग, कर्करोगाच्या शस्त्रक्रियेनंतर किंवा अपघातामुळे झालेल्या चेहऱ्याच्या व अवयवांच्या त्रुटी भरून काढण्यासाठी उच्च दर्जाचे कृत्रिम अवयव.'}
           </p>
         </div>
 
         {/* Editorial Two-Column Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Interactive Nav List for All 8 Organs */}
+          {/* Left Column: Interactive Nav List for Organs */}
           <div className="lg:col-span-5 space-y-2">
             <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-2 sm:p-3 divide-y divide-white/5">
               {MAXILLOFACIAL_PROSTHESIS_ITEMS.map((item) => {

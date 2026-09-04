@@ -28,13 +28,13 @@ export const SPECIALIZATIONS_DATA: SpecializationCardData[] = [
     iconName: "UserCheck",
     badge: "Super Specialized",
     description: {
-      en: "Specialized prosthetic rehabilitation for congenital defects or surgical resections including eye, nose, ear, cheek, palate obturators, and finger prostheses.",
+      en: "Specialized prosthetic rehabilitation for congenital defects or surgical resections including eye, nose, ear, palate obturators, and finger prostheses.",
       mr: "जन्मजात दोष, अपघात किंवा शस्त्रक्रियेनंतर चेहऱ्याचे अवयव (डोळे, नाक, कान, टाळू, बोटे) पूर्ववत करण्यासाठी उच्च दर्जाचे कृत्रिम अवयव."
     },
     subItems: [
       { en: "Orbital / Ocular, Nasal & Ear Prosthesis", mr: "डोळे, नाक आणि कान कृत्रिम अवयव" },
       { en: "Cleft Lip / Palate & Obturators", mr: "फाटलेले ओठ/टाळू व ऑब्च्यूरेटर" },
-      { en: "Cranial Stents & Finger Prosthesis", mr: "क्रॅनियल स्टेंट व हाता-पायांची बोटे" }
+      { en: "Silicone Finger & Digit Prosthesis", mr: "हाता-पायांची सिलिकॉन बोटे" }
     ]
   },
   {
@@ -195,23 +195,6 @@ export const MAXILLOFACIAL_PROSTHESIS_ITEMS: MaxillofacialProsthesisItem[] = [
     tags: ["Microtia", "Trauma Rehab", "Cartilage Replication"]
   },
   {
-    id: "cheek-malar",
-    title: "Cheek (Malar) Prosthesis",
-    titleMarathi: "गालाचे कृत्रिम अवयव (Cheek Prosthesis)",
-    organName: "Cheek & Midface",
-    organNameMarathi: "गाल व चेहऱ्याचा भाग",
-    description: {
-      en: "Precision intraoral and extraoral cheek contour restoration to eliminate facial collapse following oncological resections or trauma.",
-      mr: "गालाचा किंवा जबड्याचा भाग शस्त्रक्रियेमुळे खचला असल्यास चेहऱ्याला नैसर्गिक फुगवटा आणि आकार देणे."
-    },
-    clinicalObjective: {
-      en: "Maintains soft-tissue cheek volume and natural muscle drape for speech and chewing.",
-      mr: "गालाची त्वचा आणि स्नायूंना योग्य आधार देऊन बोलणे व चावणे सुलभ करणे."
-    },
-    iconName: "Smile",
-    tags: ["Volume Restoration", "Tissue Drape", "Midface"]
-  },
-  {
     id: "cleft-lip-palate",
     title: "Cleft Lip & Palate Prosthesis",
     titleMarathi: "दुभंगलेले / फाटलेले ओठ व टाळू कृत्रिम उपचार",
@@ -244,23 +227,6 @@ export const MAXILLOFACIAL_PROSTHESIS_ITEMS: MaxillofacialProsthesisItem[] = [
     },
     iconName: "Layers",
     tags: ["Post-Maxillectomy", "Oronasal Seal", "Functional Chewing"]
-  },
-  {
-    id: "cranial-stent",
-    title: "Cranial Stent Prosthesis",
-    titleMarathi: "क्रॅनियल स्टेंट कृत्रिम अवयव",
-    organName: "Cranium & Skull",
-    organNameMarathi: "कवटीचा भाग",
-    description: {
-      en: "Custom protective acrylic and silicone stents designed to safeguard cranial defect zones, support graft tissues, or aid post-surgical recovery.",
-      mr: "कवटीच्या शस्त्रक्रियेनंतर किंवा जखमेच्या संरक्षणासाठी तयार केलेले विशेष संरक्षक स्टेंट."
-    },
-    clinicalObjective: {
-      en: "Protects delicate neuro-cranial structures and maintains surgical tissue positioning.",
-      mr: "नाजूक उतींचे संरक्षण आणि योग्य आकार टिकवणे."
-    },
-    iconName: "Shield",
-    tags: ["Surgical Shield", "Cranial Contour", "Support Stent"]
   },
   {
     id: "finger-prosthesis",
