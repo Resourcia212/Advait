@@ -31,73 +31,7 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const allSpecialties = [
-    // --- Smile Designing & Cosmetic Dentistry ---
-    {
-      id: "veneers",
-      category: "cosmetic" as const,
-      categoryLabelEn: "Smile Design",
-      categoryLabelMr: "स्माईल डिझायनिंग",
-      titleEn: "Porcelain Veneers & Laminates",
-      titleMr: "व्हिनिअर्स व लॅमिनेट्स",
-      subtitleEn: "Flawless Front Teeth",
-      subtitleMr: "समोरच्या दातांचे सौंदर्य",
-      badge: "Aesthetic Care",
-      descEn: "Ultra-thin custom porcelain shells bonded to front teeth to correct deep stains, gaps, chips, and irregular shapes.",
-      descMr: "दातांमधील फटी, पिवळे डाग आणि वेडेवाकडे दात लपवून आकर्षक हास्य देणारे सिरॅमिक कव्हर्स.",
-      icon: <Sparkles className="w-5 h-5 text-advait-blue" />,
-      featuresEn: ["Stain resistant", "Minimal tooth shaving", "Natural translucency"],
-      featuresMr: ["डाग न पडणारे", "कमीत कमी दात घासणे", "नैसर्गिक चमक"]
-    },
-    {
-      id: "whitening",
-      category: "cosmetic" as const,
-      categoryLabelEn: "Cosmetics",
-      categoryLabelMr: "कॉस्मेटिक",
-      titleEn: "Teeth Whitening / Bleaching",
-      titleMr: "दात शुभ्र करणे (Bleaching)",
-      subtitleEn: "Radiant Brightness",
-      subtitleMr: "उजळ व चमकदार दात",
-      badge: "Radiant Smile",
-      descEn: "Safe clinical bleaching formulated to lighten stained and yellowed teeth by multiple shades effectively and safely.",
-      descMr: "दातांची हानी न करता चहा, कॉफी आणि अन्नाचे पिवळे डाग काढून दात चमकदार बनवणे.",
-      icon: <Sun className="w-5 h-5 text-advait-teal" />,
-      featuresEn: ["Enamel-safe formula", "Noticeable results", "In-clinic monitoring"],
-      featuresMr: ["सुरक्षित फॉर्म्युला", "लगेच दिसणारा परिणाम", "हिरड्यांचे रक्षण"]
-    },
-    {
-      id: "composite",
-      category: "cosmetic" as const,
-      categoryLabelEn: "Restorative Art",
-      categoryLabelMr: "नैसर्गिक पुनर्रचना",
-      titleEn: "Composite Sculpting & Bonding",
-      titleMr: "कंपोझिट - दातांच्या रंगाचे सिमेंट",
-      subtitleEn: "Seamless Integration",
-      subtitleMr: "अदृश्य सिमेंट फिलिंग",
-      badge: "Direct Bonding",
-      descEn: "Tooth-colored direct composite resin bonding to invisibly restore chipped edges, minor fractures, and front cavities.",
-      descMr: "समोरचे तुटलेले किंवा किडलेले दात दातांच्या मूळ रंगाशी जुळणाऱ्या सिमेंटने दुरुस्त करणे.",
-      icon: <Sparkles className="w-5 h-5 text-advait-green" />,
-      featuresEn: ["Single visit procedure", "Tooth-colored match", "Zero metal"],
-      featuresMr: ["एकाच भेटीत पूर्ण", "दातांचा नैसर्गिक रंग", "धातूमुक्त"]
-    },
-    {
-      id: "jewellery",
-      category: "cosmetic" as const,
-      categoryLabelEn: "Cosmetics",
-      categoryLabelMr: "कॉस्मेटिक",
-      titleEn: "Tooth Jewellery & Crystals",
-      titleMr: "टूथ ज्वेलरी (Tooth Jewellery)",
-      subtitleEn: "Distinctive Sparkle",
-      subtitleMr: "हास्यात खास चमक",
-      badge: "Non-Invasive",
-      descEn: "Non-invasive, painless bonding of dental gems and crystals onto tooth surfaces without any drilling or enamel damage.",
-      descMr: "दात न टोचता किंवा न घासता स्पेशल सुरक्षित गमने बसवले जाणारे चमकणारे खडे.",
-      icon: <Gem className="w-5 h-5 text-advait-blue-light" />,
-      featuresEn: ["100% Drill-free", "Completely reversible", "Zero pain"],
-      featuresMr: ["ड्रिलिंग नाही", "कधीही काढता येते", "अजिबात दुखत नाही"]
-    },
-
-    // --- Specialized Prosthodontic & Implant Care ---
+    // --- Specialized Prosthodontic & Implant Care (Row 1) ---
     {
       id: "dental-implants",
       category: "prosthodontics" as const,
@@ -161,6 +95,72 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
       icon: <Hammer className="w-5 h-5 text-advait-blue" />,
       featuresEn: ["Ceramic & Zirconia Crowns", "Multi-Unit Fixed Bridges", "Post & Core Build-up"],
       featuresMr: ["सिरॅमिक व झिरकोनिया", "मजबूत फिक्स ब्रीज", "पोस्ट आणि कोअर"]
+    },
+
+    // --- Smile Designing & Cosmetic Dentistry (Row 2) ---
+    {
+      id: "veneers",
+      category: "cosmetic" as const,
+      categoryLabelEn: "Smile Design",
+      categoryLabelMr: "स्माईल डिझायनिंग",
+      titleEn: "Porcelain Veneers & Laminates",
+      titleMr: "व्हिनिअर्स व लॅमिनेट्स",
+      subtitleEn: "Flawless Front Teeth",
+      subtitleMr: "समोरच्या दातांचे सौंदर्य",
+      badge: "Aesthetic Care",
+      descEn: "Ultra-thin custom porcelain shells bonded to front teeth to correct deep stains, gaps, chips, and irregular shapes.",
+      descMr: "दातांमधील फटी, पिवळे डाग आणि वेडेवाकडे दात लपवून आकर्षक हास्य देणारे सिरॅमिक कव्हर्स.",
+      icon: <Sparkles className="w-5 h-5 text-advait-blue" />,
+      featuresEn: ["Stain resistant", "Minimal tooth shaving", "Natural translucency"],
+      featuresMr: ["डाग न पडणारे", "कमीत कमी दात घासणे", "नैसर्गिक चमक"]
+    },
+    {
+      id: "whitening",
+      category: "cosmetic" as const,
+      categoryLabelEn: "Cosmetics",
+      categoryLabelMr: "कॉस्मेटिक",
+      titleEn: "Teeth Whitening / Bleaching",
+      titleMr: "दात शुभ्र करणे (Bleaching)",
+      subtitleEn: "Radiant Brightness",
+      subtitleMr: "उजळ व चमकदार दात",
+      badge: "Radiant Smile",
+      descEn: "Safe clinical bleaching formulated to lighten stained and yellowed teeth by multiple shades effectively and safely.",
+      descMr: "दातांची हानी न करता चहा, कॉफी आणि अन्नाचे पिवळे डाग काढून दात चमकदार बनवणे.",
+      icon: <Sun className="w-5 h-5 text-advait-teal" />,
+      featuresEn: ["Enamel-safe formula", "Noticeable results", "In-clinic monitoring"],
+      featuresMr: ["सुरक्षित फॉर्म्युला", "लगेच दिसणारा परिणाम", "हिरड्यांचे रक्षण"]
+    },
+    {
+      id: "composite",
+      category: "cosmetic" as const,
+      categoryLabelEn: "Restorative Art",
+      categoryLabelMr: "नैसर्गिक पुनर्रचना",
+      titleEn: "Composite Sculpting & Bonding",
+      titleMr: "कंपोझिट - दातांच्या रंगाचे सिमेंट",
+      subtitleEn: "Seamless Integration",
+      subtitleMr: "अदृश्य सिमेंट फिलिंग",
+      badge: "Direct Bonding",
+      descEn: "Tooth-colored direct composite resin bonding to invisibly restore chipped edges, minor fractures, and front cavities.",
+      descMr: "समोरचे तुटलेले किंवा किडलेले दात दातांच्या मूळ रंगाशी जुळणाऱ्या सिमेंटने दुरुस्त करणे.",
+      icon: <Sparkles className="w-5 h-5 text-advait-green" />,
+      featuresEn: ["Single visit procedure", "Tooth-colored match", "Zero metal"],
+      featuresMr: ["एकाच भेटीत पूर्ण", "दातांचा नैसर्गिक रंग", "धातूमुक्त"]
+    },
+    {
+      id: "jewellery",
+      category: "cosmetic" as const,
+      categoryLabelEn: "Cosmetics",
+      categoryLabelMr: "कॉस्मेटिक",
+      titleEn: "Tooth Jewellery & Crystals",
+      titleMr: "टूथ ज्वेलरी (Tooth Jewellery)",
+      subtitleEn: "Distinctive Sparkle",
+      subtitleMr: "हास्यात खास चमक",
+      badge: "Non-Invasive",
+      descEn: "Non-invasive, painless bonding of dental gems and crystals onto tooth surfaces without any drilling or enamel damage.",
+      descMr: "दात न टोचता किंवा न घासता स्पेशल सुरक्षित गमने बसवले जाणारे चमकणारे खडे.",
+      icon: <Gem className="w-5 h-5 text-advait-blue-light" />,
+      featuresEn: ["100% Drill-free", "Completely reversible", "Zero pain"],
+      featuresMr: ["ड्रिलिंग नाही", "कधीही काढता येते", "अजिबात दुखत नाही"]
     }
   ];
 
@@ -183,19 +183,19 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-advait-navy tracking-tight">
             {currentLang === 'en' ? (
               <>
-                Smile Designing & <span className="gradient-text-blue">Clinical Specialties</span>
+                Clinical Specialties & <span className="gradient-text-blue">Smile Designing</span>
               </>
             ) : (
               <>
-                स्माईल डिझायनिंग आणि <span className="gradient-text-blue">विशेष दंतोपचार</span>
+                विशेष दंतोपचार आणि <span className="gradient-text-blue">स्माईल डिझायनिंग</span>
               </>
             )}
           </h2>
 
           <p className="text-sm sm:text-base text-advait-text-secondary">
             {currentLang === 'en'
-              ? 'Blending aesthetic artistry and advanced M.D.S. prosthodontic precision to give you healthy, confident, and luminous smiles.'
-              : 'सौंदर्यात्मक कला आणि M.D.S. प्रोस्थोडॉन्टिक्सची अचूकता यांचा मेळ घालून निरोगी आणि सुंदर हास्य प्रदान करणारे उपचार.'}
+              ? 'Blending advanced M.D.S. prosthodontic precision and aesthetic artistry to give you healthy, confident, and luminous smiles.'
+              : 'M.D.S. प्रोस्थोडॉन्टिक्सची अचूकता आणि सौंदर्यात्मक कला यांचा मेळ घालून निरोगी आणि सुंदर हास्य प्रदान करणारे उपचार.'}
           </p>
 
           {/* Interactive Filter Pills */}
@@ -215,20 +215,6 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
 
             <button
               onClick={() => {
-                setActiveTab('cosmetic');
-              }}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs flex items-center gap-1.5 ${
-                activeTab === 'cosmetic'
-                  ? 'bg-advait-teal text-white shadow-xs scale-105'
-                  : 'bg-advait-teal-soft/80 text-advait-teal hover:bg-advait-teal-soft hover:text-advait-teal-dark'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{currentLang === 'en' ? 'Smile Designing & Cosmetics' : 'स्माईल डिझायनिंग व कॉस्मेटिक्स'}</span>
-            </button>
-
-            <button
-              onClick={() => {
                 setActiveTab('prosthodontics');
               }}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs flex items-center gap-1.5 ${
@@ -239,6 +225,20 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
             >
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>{currentLang === 'en' ? 'Prosthodontics & Implants' : 'प्रोस्थोडॉन्टिक्स व इम्प्लांट्स'}</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveTab('cosmetic');
+              }}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-2xs flex items-center gap-1.5 ${
+                activeTab === 'cosmetic'
+                  ? 'bg-advait-teal text-white shadow-xs scale-105'
+                  : 'bg-advait-teal-soft/80 text-advait-teal hover:bg-advait-teal-soft hover:text-advait-teal-dark'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{currentLang === 'en' ? 'Smile Designing & Cosmetics' : 'स्माईल डिझायनिंग व कॉस्मेटिक्स'}</span>
             </button>
           </div>
         </div>
