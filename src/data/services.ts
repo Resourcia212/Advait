@@ -2,53 +2,13 @@ import { ServiceItem, CategoryInfo } from '../types';
 
 export const SERVICE_CATEGORIES: CategoryInfo[] = [
   {
-    id: 'preventive-general',
-    name: 'Preventive & General Dentistry',
-    nameMarathi: 'प्रतिबंधक व सामान्य दंतचिकित्सा',
-    icon: 'Shield',
-    description: {
-      en: 'Routine cleanings, early diagnosis, dental x-rays, and essential oral health maintenance.',
-      mr: 'नियमित तपासणी, स्केलिंग, एक्सरे आणि दातांची प्राथमिक स्वच्छता.'
-    }
-  },
-  {
-    id: 'restorative',
-    name: 'Restorative Dentistry',
-    nameMarathi: 'रिस्टोरेटिव्ह दंत उपचार',
-    icon: 'Hammer',
-    description: {
-      en: 'High-strength dental crowns, bridges, post & core, and composite tooth-colored fillings.',
-      mr: 'तुटलेल्या दातांसाठी कॅप, पक्के ब्रीज, पोस्ट-कोअर आणि कंपोझिट सिमेंट.'
-    }
-  },
-  {
-    id: 'cosmetic',
-    name: 'Cosmetic Dentistry',
-    nameMarathi: 'कॉस्मेटिक व स्माईल डिझायनिंग',
-    icon: 'Sparkles',
-    description: {
-      en: 'Porcelain veneers, teeth bleaching, tooth jewellery, and tailored smile makeovers.',
-      mr: 'व्हिनिअर्स, दात शुभ्र करणे, टूथ ज्वेलरी आणि आकर्षक हास्याची पुनर्रचना.'
-    }
-  },
-  {
-    id: 'prosthodontics',
-    name: 'Prosthodontics & Dentures',
-    nameMarathi: 'प्रोस्थोडॉन्टिक्स व कवळीचे प्रकार',
-    icon: 'Layers',
-    description: {
-      en: 'Specialized complete dentures, cast partials, flexible dentures, and full mouth rehab.',
-      mr: 'संपूर्ण बसिसी, अंशिक कवळी, फ्लेक्सीबल कवळी आणि संपूर्ण मुख पुनर्रचना.'
-    }
-  },
-  {
     id: 'implantology',
-    name: 'Implantology',
-    nameMarathi: 'दंत रोपण (इम्प्लांट्स)',
+    name: 'Dental Implants & Prosthodontics',
+    nameMarathi: 'दंत रोपण (इम्प्लांट्स) व प्रोस्थोडॉन्टिक्स',
     icon: 'ShieldCheck',
     description: {
-      en: 'Precision titanium dental implants and implant-supported overdentures.',
-      mr: 'कायमस्वरूपी मजबूत दात बसवण्यासाठी आधुनिक टायटॅनियम दंत रोपण.'
+      en: 'Precision titanium dental implants, implant-retained overdentures, complete dentures (बसिसी), and full mouth rehabilitation.',
+      mr: 'कायमस्वरूपी टायटॅनियम दंत रोपण, इम्प्लांट ओव्हरडेंचर्स, आधुनिक बसिसी व संपूर्ण मुख पुनर्रचना.'
     }
   },
   {
@@ -62,13 +22,33 @@ export const SERVICE_CATEGORIES: CategoryInfo[] = [
     }
   },
   {
-    id: 'tmj-other',
-    name: 'TMJ & Specialized Modalities',
-    nameMarathi: 'TMJ, रूट कॅनॉल व इतर उपचार',
-    icon: 'Stethoscope',
+    id: 'cosmetic',
+    name: 'Smile Designing & Cosmetics',
+    nameMarathi: 'स्माईल डिझायनिंग व कॉस्मेटिक्स',
+    icon: 'Sparkles',
     description: {
-      en: 'TMJ splints, Root Canal Treatment (RCT), orthodontics, and gum surgery.',
-      mr: 'जबड्याचे सांधेदुखी स्प्लिंट्स, रूट कॅनॉल (RCT), वाकडे दात सरळ करणे व हिरड्यांची शस्त्रक्रिया.'
+      en: 'Porcelain veneers, clinical teeth bleaching, tooth jewellery, and tailored smile makeovers.',
+      mr: 'व्हिनिअर्स, दात शुभ्र करणे, टूथ ज्वेलरी आणि आकर्षक हास्याची पुनर्रचना.'
+    }
+  },
+  {
+    id: 'restorative',
+    name: 'Restorative Care & RCT',
+    nameMarathi: 'रिस्टोरेटिव्ह व रूट कॅनॉल',
+    icon: 'Hammer',
+    description: {
+      en: 'Single-sitting Root Canal Treatment (RCT), high-strength Zirconia crowns, bridges, post & core, and TMJ splints.',
+      mr: 'रूट कॅनॉल (RCT), दर्जेदार क्राउन्स, पक्के ब्रीज, पोस्ट-कोअर आणि जबड्याचे सांधेदुखी स्प्लिंट्स.'
+    }
+  },
+  {
+    id: 'preventive-general',
+    name: 'Preventive & General Dentistry',
+    nameMarathi: 'प्रतिबंधक व सामान्य दंतचिकित्सा',
+    icon: 'Shield',
+    description: {
+      en: 'Routine cleanings, scaling & polishing, digital dental X-rays, fluoride care, and gentle extractions.',
+      mr: 'नियमित स्वच्छता (स्केलिंग), डिजिटल एक्सरे, फ्ल्युराईड लेप व दात काढणे.'
     }
   }
 ];
@@ -383,12 +363,12 @@ export const ALL_SERVICES: ServiceItem[] = [
     iconName: "Gem"
   },
 
-  // 4. Prosthodontics
+  // 4. Prosthodontics & Implantology
   {
     id: "complete-dentures",
     name: "Complete Dentures (बसिसी)",
     nameMarathi: "संपूर्ण कवळी - बसिसी (Complete Dentures)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Precision-molded full-arch removable prostheses replacing all upper or lower missing teeth.",
       mr: "वरच्या किंवा खालच्या सर्व दात नसलेल्या जबड्यासाठी बसवली जाणारी संपूर्ण कवळी (बसिसी)."
@@ -412,7 +392,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "cast-partial-dentures",
     name: "Cast Partial Dentures (अंशिक कवळी)",
     nameMarathi: "कास्ट पार्शिअल डेंचर्स - अंशिक कवळी (Cast Partial)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Metal framework partial dentures with precise clasps for maximum retention and stability when several teeth remain.",
       mr: "धातूच्या मजबूत फ्रेमवर तयार केलेली, उरलेल्या दातांच्या आधारे घट्ट बसणारी अंशिक कवळी."
@@ -435,7 +415,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "flexible-dentures",
     name: "Flexible Dentures",
     nameMarathi: "फ्लेक्सीबल कवळी (Flexible Dentures)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Lightweight, unbreakable thermoplastic nylon dentures with gum-colored clasps for maximum comfort.",
       mr: "अतिशय लवचिक, न तुटणारी, हलकी आणि हिरड्यांच्या रंगाची लवचिक कवळी."
@@ -458,7 +438,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "overdentures",
     name: "Overdentures",
     nameMarathi: "ओव्हर डेंचर्स (Overdentures)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Removable dentures supported and stabilized over remaining natural roots or dental implant attachments.",
       mr: "उरलेल्या मूळ दातांवर किंवा इम्प्लांट्सवर घट्ट लॉक होणारी विशेष ओव्हरडेंचर कवळी."
@@ -481,7 +461,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "immediate-dentures",
     name: "Immediate Dentures",
     nameMarathi: "इमेडिएट डेंचर्स - त्वरित कवळी (Immediate Dentures)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Dentures inserted on the exact same day teeth are extracted, ensuring you never have to be without teeth.",
       mr: "दात काढल्या दिवशीच लगेच बसवली जाणारी त्वरित कवळी, जेणेकरून दात नसलेली वेळ येत नाही."
@@ -504,7 +484,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "full-mouth-rehabilitation-service",
     name: "Full Mouth Rehabilitation",
     nameMarathi: "संपूर्ण दातांची पुनर्रचना (Full Mouth Rehabilitation)",
-    category: "prosthodontics",
+    category: "implantology",
     shortDescription: {
       en: "Complete restorative overhaul reconstructing all upper and lower teeth, restoring bite height and joint harmony.",
       mr: "सर्व दातांची, जबड्याच्या सांध्याची आणि चाव्याच्या उंचीची संपूर्ण शास्त्रीय पुनर्रचना."
@@ -763,12 +743,12 @@ export const ALL_SERVICES: ServiceItem[] = [
     isFeatured: true
   },
 
-  // 7. TMJ & Other Care
+  // 7. Restorative Care & RCT & TMJ
   {
     id: "tmj-treatment-service",
     name: "TMJ Disorder Treatment & Occlusal Splints",
     nameMarathi: "TMJ दोष : निदान व उपचार (TMJ & Splints)",
-    category: "tmj-other",
+    category: "restorative",
     shortDescription: {
       en: "Diagnostic evaluation and custom milled occlusal splints to relieve jaw joint pain, clicking, and teeth grinding.",
       mr: "जबड्याच्या सांध्याचे दुखणे, आवाज येणे, दात खाणे या विकारांवर फॅब्रिकेटेड मिल्ड स्प्लिंट्सद्वारे उपचार."
@@ -792,7 +772,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "root-canal-treatment",
     name: "Root Canal Treatment (RCT)",
     nameMarathi: "दातांच्या मज्जेचा उपचार / रूट कॅनॉल (RCT)",
-    category: "tmj-other",
+    category: "restorative",
     shortDescription: {
       en: "Painless removal of infected pulp tissue, disinfecting root canals, and sealing to save badly damaged teeth.",
       mr: "किडलेल्या दाताच्या मुळातील इन्फेक्शन काढून दात न काढता कायमचा वाचवणारा रूट कॅनॉल उपचार."
@@ -816,7 +796,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "orthodontic-treatment",
     name: "Orthodontic Treatment",
     nameMarathi: "वाकडेतिकडे दात सरळ करणे (Orthodontics)",
-    category: "tmj-other",
+    category: "restorative",
     shortDescription: {
       en: "Alignment of crooked, crowded, or forward teeth using metal, ceramic braces, or clear aligners.",
       mr: "पुढे आलेले, वाकडेतिकडे किंवा एकमेकांवर चढलेले दात सरळ व सुंदर रेषेत आणणे."
@@ -839,7 +819,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     id: "gum-surgery",
     name: "Gum Surgery",
     nameMarathi: "हिरड्यांची शस्त्रक्रिया (Gum Surgery)",
-    category: "tmj-other",
+    category: "restorative",
     shortDescription: {
       en: "Periodontal flap surgery and bone grafting to treat deep gum pockets, advanced pyorrhea, and stop tooth loosening.",
       mr: "हिरड्यांचे गंभीर आजार (पायोरिया) दूर करण्यासाठी व हलणारे दात घट्ट करण्यासाठी शस्त्रक्रिया."
