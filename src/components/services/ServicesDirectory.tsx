@@ -9,7 +9,6 @@ import {
   UserCheck,
   ArrowRight,
   Calendar,
-  Filter,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
@@ -27,13 +26,13 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
   onSelectService,
   onOpenAppointmentModal,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('implantology');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [visibleCount, setVisibleCount] = useState<number>(8);
 
   const filteredServices = useMemo(() => {
     return ALL_SERVICES.filter((service) => {
-      const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory;
+      const matchesCategory = service.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !q ||
@@ -105,12 +104,12 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
 
           <p className="text-xs sm:text-sm text-advait-text-secondary">
             {currentLang === 'en'
-              ? 'Explore our full spectrum of specialized prosthodontic, surgical, cosmetic, and preventive dental procedures.'
+              ? 'Explore our full spectrum of specialized prosthodontic, surgical, cosmetic, and general dental procedures.'
               : 'प्राथमिक प्रतिबंधक उपचारांपासून ते प्रोस्थोडॉन्टिक्स, कृत्रिम अवयव व इम्प्लांट्सपर्यंत सर्व उपचार एकाच क्लिनिकमध्ये.'}
           </p>
         </div>
 
-        {/* Filter Bar: Search Input & 5 Clean Category Pills (Zero Horizontal Scrollbar) */}
+        {/* Filter Bar: Search Input & 4 Clean Category Pills (Zero Horizontal Scrollbar) */}
         <div className="space-y-4 mb-8">
           {/* Search Box */}
           <div className="max-w-md mx-auto relative">
@@ -135,24 +134,8 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
             )}
           </div>
 
-          {/* 5 Clean Category Pills - Balanced Wrapped Layout Without Scrollbars */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1 pb-1">
-            <button
-              onClick={() => {
-                setSelectedCategory('all');
-                setVisibleCount(8);
-              }}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
-                selectedCategory === 'all'
-                  ? 'bg-advait-navy text-white shadow-xs scale-105'
-                  : 'bg-white text-advait-navy border border-advait-border hover:bg-slate-50'
-              }`}
-            >
-              <Filter className="w-3 h-3" />
-              <span>{currentLang === 'en' ? 'All Treatments' : 'सर्व उपचार'}</span>
-              <span className="text-[10px] opacity-75">({ALL_SERVICES.length})</span>
-            </button>
-
+          {/* 4 Clean Category Pills - Balanced Wrapped Layout Without Scrollbars */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 pt-1 pb-1">
             {SERVICE_CATEGORIES.map((cat) => {
               const count = ALL_SERVICES.filter(s => s.category === cat.id).length;
               const isSelected = selectedCategory === cat.id;
@@ -164,9 +147,9 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
                     setSelectedCategory(cat.id);
                     setVisibleCount(8);
                   }}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 ${
                     isSelected
-                      ? 'bg-advait-blue text-white shadow-xs scale-105'
+                      ? 'bg-advait-blue text-white shadow-card scale-[1.03] ring-2 ring-advait-blue/30'
                       : isImplant
                       ? 'bg-advait-blue-soft/90 text-advait-blue border border-advait-blue/30 hover:bg-advait-blue hover:text-white'
                       : 'bg-white text-advait-navy border border-advait-border hover:bg-slate-50'
@@ -174,7 +157,9 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
                 >
                   {getCategoryIcon(cat.id)}
                   <span>{currentLang === 'en' ? cat.name : cat.nameMarathi}</span>
-                  <span className="text-[10px] opacity-75">({count})</span>
+                  <span className={`text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md font-semibold ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -208,22 +193,16 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
                 className="bg-white rounded-2xl p-5 border border-advait-border hover:border-advait-blue/50 shadow-xs hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer relative overflow-hidden"
               >
                 <div className="space-y-3">
-                  {/* Category Pill & Focus Badge */}
-                  <div className="flex items-center justify-between gap-1.5">
-                    {service.category === 'implantology' ? (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-advait-blue text-white border border-advait-blue shadow-2xs flex items-center gap-1">
-                        <span>⭐</span>
-                        <span>{currentLang === 'en' ? 'Primary Focus' : 'मुख्य वैशिष्ट्य'}</span>
-                      </span>
-                    ) : (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-advait-blue-soft text-advait-blue border border-advait-blue/20 group-hover:bg-advait-blue group-hover:text-white transition-colors duration-300">
-                        {SERVICE_CATEGORIES.find(c => c.id === service.category)?.name.split('&')[0] || service.category}
-                      </span>
-                    )}
+                  {/* Category Pill & Popular Badge */}
+                  <div className="flex items-center justify-between gap-1.5 min-h-[22px]">
+                    <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-advait-blue-soft text-advait-blue border border-advait-blue/20 group-hover:bg-advait-blue group-hover:text-white transition-colors duration-300 truncate max-w-[170px]">
+                      {SERVICE_CATEGORIES.find(c => c.id === service.category)?.name.split('&')[0] || service.category}
+                    </span>
 
                     {service.isFeatured && (
-                      <span className="text-[10px] font-bold text-advait-green uppercase tracking-wider">
-                        ★ {currentLang === 'en' ? 'Key' : 'महत्त्वाचे'}
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-advait-blue-soft text-advait-blue border border-advait-blue/25 shadow-2xs shrink-0">
+                        <span className="text-amber-500 font-bold">★</span>
+                        <span>{currentLang === 'en' ? 'Popular' : 'लोकप्रिय'}</span>
                       </span>
                     )}
                   </div>
@@ -268,12 +247,12 @@ export const ServicesDirectory: React.FC<ServicesDirectoryProps> = ({
             <button
               onClick={() => {
                 setSearchQuery('');
-                setSelectedCategory('all');
+                setSelectedCategory('implantology');
                 setVisibleCount(8);
               }}
               className="text-xs font-bold text-advait-blue hover:underline"
             >
-              {currentLang === 'en' ? 'Reset filters and view all' : 'सर्व उपचार पुन्हा पहा'}
+              {currentLang === 'en' ? 'Reset search' : 'शोध रीसेट करा'}
             </button>
           </div>
         )}
