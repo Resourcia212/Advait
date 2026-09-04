@@ -45,12 +45,13 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
     if (initialClinicLocation) {
       const isMayureeBranch =
         initialClinicLocation.includes('Shree Ram') ||
-        initialClinicLocation.includes('Panchavati');
+        initialClinicLocation.includes('Panchavati') ||
+        initialClinicLocation.includes('Adgaon');
       setFormData((prev) => ({
         ...prev,
         preferredClinic: isMayureeBranch
-          ? 'Shree Ram Multi Speciality Clinic (Panchavati)'
-          : 'Advait Multi Speciality Clinic (Indira Nagar)',
+          ? 'Shree Ram Multi Speciality Clinic, Adgaon Shivar'
+          : 'Advait Multi Speciality Clinic, Indira Nagar',
         preferredDoctor: isMayureeBranch
           ? DOCTOR_MAYUREE_INFO.name
           : DOCTOR_INFO.name,
@@ -60,7 +61,7 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
 
   const handleClinicChange = (clinicName: string) => {
     const isMayureeBranch =
-      clinicName.includes('Shree Ram') || clinicName.includes('Panchavati');
+      clinicName.includes('Shree Ram') || clinicName.includes('Panchavati') || clinicName.includes('Adgaon');
     setFormData((prev) => ({
       ...prev,
       preferredClinic: clinicName,
@@ -78,8 +79,8 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
         ? DOCTOR_MAYUREE_INFO.name
         : DOCTOR_INFO.name,
       preferredClinic: isMayuree
-        ? 'Shree Ram Multi Speciality Clinic (Panchavati)'
-        : 'Advait Multi Speciality Clinic (Indira Nagar)',
+        ? 'Shree Ram Multi Speciality Clinic, Adgaon Shivar'
+        : 'Advait Multi Speciality Clinic, Indira Nagar',
     }));
   };
 
@@ -359,11 +360,15 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                         onChange={(e) => handleClinicChange(e.target.value)}
                         className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                       >
-                        <option value="Advait Multi Speciality Clinic (Indira Nagar)">
-                          {currentLang === 'en' ? 'Advait Clinic (Indira Nagar) • Dr. Lilesh Shinde' : 'अद्वैत क्लिनिक (इंदिरा नगर) • डॉ. लिलेश शिंदे'}
+                        <option value="Advait Multi Speciality Clinic, Indira Nagar">
+                          {currentLang === 'en'
+                            ? 'Advait Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar • Dr. Lilesh Shinde'
+                            : 'अद्वैत क्लिनिक, शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर • डॉ. लिलेश शिंदे'}
                         </option>
-                        <option value="Shree Ram Multi Speciality Clinic (Panchavati)">
-                          {currentLang === 'en' ? 'Shree Ram Clinic (Panchavati) • Dr. Mayuree Shinde' : 'श्री राम क्लिनिक (पंचवटी) • डॉ. मयुरी शिंदे'}
+                        <option value="Shree Ram Multi Speciality Clinic, Adgaon Shivar">
+                          {currentLang === 'en'
+                            ? 'Shree Ram Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar • Dr. Mayuree Shinde'
+                            : 'श्री राम क्लिनिक, एसबीआय बँके जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार • डॉ. मयुरी शिंदे'}
                         </option>
                       </select>
                     </div>
@@ -386,10 +391,10 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                       className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                     >
                       <option value={DOCTOR_INFO.name}>
-                        Dr. Lilesh A. Shinde — Advait Clinic (Indira Nagar Branch)
+                        Dr. Lilesh A. Shinde — Advait Multi Speciality Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar
                       </option>
                       <option value={DOCTOR_MAYUREE_INFO.name}>
-                        Dr. Mayuree L. Shinde — Shree Ram Clinic (Panchavati Branch)
+                        Dr. Mayuree L. Shinde — Shree Ram Multi Speciality Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar
                       </option>
                     </select>
 
@@ -397,13 +402,13 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-advait-blue-soft/60 border border-advait-blue/20 text-[11px] text-advait-navy">
                       <span className="font-bold text-advait-blue shrink-0">ℹ️ {currentLang === 'en' ? 'Branch Doctor:' : 'शाखा प्रमुख:'}</span>
                       <span className="truncate">
-                        {formData.preferredClinic.includes('Panchavati') || formData.preferredDoctor?.includes('Mayuree')
+                        {formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Adgaon') || formData.preferredDoctor?.includes('Mayuree')
                           ? currentLang === 'en'
-                            ? 'Dr. Mayuree L. Shinde heads the Shree Ram Panchavati clinic.'
-                            : 'डॉ. मयुरी शिंदे या श्री राम क्लिनिक (पंचवटी) येथील प्रमुख आहेत.'
+                            ? 'Dr. Mayuree L. Shinde heads Shree Ram Clinic, Near SBI Bank, Jatra Hotel Chaufali, Adgaon Shivar.'
+                            : 'डॉ. मयुरी शिंदे या श्री राम क्लिनिक (एसबीआय बँके जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार) येथील प्रमुख आहेत.'
                           : currentLang === 'en'
-                            ? 'Dr. Lilesh A. Shinde heads the Advait Indira Nagar clinic.'
-                            : 'डॉ. लिलेश शिंदे हे अद्वैत क्लिनिक (इंदिरा नगर) येथील प्रमुख आहेत.'}
+                            ? 'Dr. Lilesh A. Shinde heads Advait Clinic, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar.'
+                            : 'डॉ. लिलेश शिंदे हे अद्वैत क्लिनिक (शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर) येथील प्रमुख आहेत.'}
                       </span>
                     </div>
                   </div>
