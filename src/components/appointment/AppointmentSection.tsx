@@ -5,8 +5,8 @@ import { PRIMARY_PHONE, SECONDARY_PHONE, DISPLAY_PRIMARY_PHONE, DISPLAY_SECONDAR
 import { BookingConfirmation } from './BookingConfirmation';
 import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
 
-const ADVAIT_LOCATION_ADDRESS = "Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009";
-const SHREE_RAM_LOCATION_ADDRESS = "Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003";
+const ADVAIT_CLINIC_LOCATION = "Advait Multi Speciality Clinic, Indira Nagar, Nashik";
+const SHREE_RAM_CLINIC_LOCATION = "Shree Ram Multi Speciality Clinic, Adgaon Shivar, Panchavati, Nashik";
 
 interface AppointmentSectionProps {
   currentLang: Language;
@@ -29,7 +29,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
     phone: '',
     email: '',
     preferredDoctor: isInitialMayuree ? DOCTOR_MAYUREE_INFO.name : DOCTOR_INFO.name,
-    preferredClinic: isInitialMayuree ? SHREE_RAM_LOCATION_ADDRESS : ADVAIT_LOCATION_ADDRESS,
+    preferredClinic: isInitialMayuree ? SHREE_RAM_CLINIC_LOCATION : ADVAIT_CLINIC_LOCATION,
     preferredDate: '',
     preferredTime: 'Morning (10:00 AM - 1:00 PM)',
     treatment: initialServiceOrReason || '',
@@ -40,24 +40,24 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleDoctorChange = (doctorName: string) => {
-    const isMayuree = doctorName.includes('Mayuree');
+    const isMayuree = doctorName.includes('Mayuree') || doctorName.includes('मयुरी') || doctorName.includes('Shree Ram');
     setFormData((prev) => ({
       ...prev,
       preferredDoctor: isMayuree
         ? DOCTOR_MAYUREE_INFO.name
         : DOCTOR_INFO.name,
       preferredClinic: isMayuree
-        ? SHREE_RAM_LOCATION_ADDRESS
-        : ADVAIT_LOCATION_ADDRESS,
+        ? SHREE_RAM_CLINIC_LOCATION
+        : ADVAIT_CLINIC_LOCATION,
     }));
   };
 
-  const handleClinicChange = (clinicAddress: string) => {
+  const handleClinicChange = (clinicLoc: string) => {
     const isMayuree =
-      clinicAddress.includes('Shree Ram') || clinicAddress.includes('Panchavati') || clinicAddress.includes('Adgaon');
+      clinicLoc.includes('Shree Ram') || clinicLoc.includes('Panchavati') || clinicLoc.includes('Adgaon');
     setFormData((prev) => ({
       ...prev,
-      preferredClinic: clinicAddress,
+      preferredClinic: clinicLoc,
       preferredDoctor: isMayuree
         ? DOCTOR_MAYUREE_INFO.name
         : DOCTOR_INFO.name,
@@ -312,33 +312,33 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
                     <select
                       value={formData.preferredDoctor}
                       onChange={(e) => handleDoctorChange(e.target.value)}
-                      className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30"
+                      className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                     >
                       <option value={DOCTOR_INFO.name}>
-                        Dr. Lilesh A. Shinde — Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009
+                        Dr. Lilesh A. Shinde — Advait Multi Speciality Clinic
                       </option>
                       <option value={DOCTOR_MAYUREE_INFO.name}>
-                        Dr. Mayuree L. Shinde — Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003
+                        Dr. Mayuree L. Shinde — Shree Ram Multi Speciality Clinic
                       </option>
                     </select>
                   </div>
 
-                  {/* 2. Clinic Location & Full Address (Positioned Second) */}
+                  {/* 2. Clinic Location (Positioned Second) */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-advait-navy flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-advait-blue" />
-                      <span>{currentLang === 'en' ? 'Clinic Location & Full Address *' : 'क्लिनिक व पूर्ण पत्ता निवडा *'}</span>
+                      <span>{currentLang === 'en' ? 'Clinic Location & Area *' : 'क्लिनिक व शाखा निवडा *'}</span>
                     </label>
                     <select
                       value={formData.preferredClinic}
                       onChange={(e) => handleClinicChange(e.target.value)}
-                      className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30"
+                      className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border text-xs sm:text-sm text-advait-navy bg-white font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
                     >
-                      <option value={ADVAIT_LOCATION_ADDRESS}>
-                        Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009
+                      <option value={ADVAIT_CLINIC_LOCATION}>
+                        Advait Multi Speciality Clinic — Indira Nagar, Nashik
                       </option>
-                      <option value={SHREE_RAM_LOCATION_ADDRESS}>
-                        Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003
+                      <option value={SHREE_RAM_CLINIC_LOCATION}>
+                        Shree Ram Multi Speciality Clinic — Adgaon Shivar, Panchavati, Nashik
                       </option>
                     </select>
                   </div>
