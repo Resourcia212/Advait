@@ -7,11 +7,13 @@ import {
   DISPLAY_PRIMARY_PHONE,
   DISPLAY_SECONDARY_PHONE,
   CLINIC_EMAIL,
-  CLINIC_LOCATIONS,
   DOCTOR_INFO,
   DOCTOR_MAYUREE_INFO
 } from '../../data/clinicInfo';
 import { validateGenuineMobile, validatePatientName } from '../../lib/validation';
+
+const ADVAIT_LOCATION_ADDRESS = "Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009";
+const SHREE_RAM_LOCATION_ADDRESS = "Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003";
 
 interface ContactSectionProps {
   currentLang: Language;
@@ -22,7 +24,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
     name: '',
     phone: '',
     email: '',
-    preferredClinic: CLINIC_LOCATIONS[0].name,
+    preferredClinic: ADVAIT_LOCATION_ADDRESS,
     preferredDoctor: DOCTOR_INFO.name,
     preferredDate: '',
     message: '',
@@ -30,18 +32,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-
-  const handleClinicChange = (clinicName: string) => {
-    const isMayureeBranch =
-      clinicName.includes('Shree Ram') || clinicName.includes('Panchavati') || clinicName.includes('Adgaon');
-    setFormData((prev) => ({
-      ...prev,
-      preferredClinic: clinicName,
-      preferredDoctor: isMayureeBranch
-        ? DOCTOR_MAYUREE_INFO.name
-        : DOCTOR_INFO.name,
-    }));
-  };
 
   const handleDoctorChange = (doctorName: string) => {
     const isMayuree = doctorName.includes('Mayuree');
@@ -51,8 +41,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
         ? DOCTOR_MAYUREE_INFO.name
         : DOCTOR_INFO.name,
       preferredClinic: isMayuree
-        ? 'Shree Ram Multi Speciality Clinic, Adgaon Shivar'
-        : 'Advait Multi Speciality Clinic, Indira Nagar',
+        ? SHREE_RAM_LOCATION_ADDRESS
+        : ADVAIT_LOCATION_ADDRESS,
+    }));
+  };
+
+  const handleClinicChange = (clinicAddress: string) => {
+    const isMayuree =
+      clinicAddress.includes('Shree Ram') || clinicAddress.includes('Panchavati') || clinicAddress.includes('Adgaon');
+    setFormData((prev) => ({
+      ...prev,
+      preferredClinic: clinicAddress,
+      preferredDoctor: isMayuree
+        ? DOCTOR_MAYUREE_INFO.name
+        : DOCTOR_INFO.name,
     }));
   };
 
@@ -279,83 +281,89 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Email Address */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-advait-navy">
-                      {currentLang === 'en' ? 'Email Address' : 'ईमेल'}
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="name@example.com"
-                      className={`w-full px-3.5 py-2 rounded-xl border text-xs sm:text-sm text-advait-navy focus:outline-none focus:ring-2 focus:ring-advait-blue/30 ${
-                        errors.email ? 'border-red-500 bg-red-50/50' : 'border-advait-border bg-slate-50/50 focus:bg-white'
-                      }`}
-                    />
-                  </div>
-
-                  {/* Select Preferred Clinic */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-advait-navy">
-                      {currentLang === 'en' ? 'Select Preferred Clinic' : 'शाखा निवडा'}
-                    </label>
-                    <select
-                      value={formData.preferredClinic}
-                      onChange={(e) => handleClinicChange(e.target.value)}
-                      className="w-full max-w-full px-3 py-2 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
-                    >
-                      <option value="Advait Multi Speciality Clinic, Indira Nagar">
-                        {currentLang === 'en'
-                          ? 'Advait Clinic, Indira Nagar • Dr. Lilesh Shinde'
-                          : 'अद्वैत क्लिनिक, इंदिरा नगर • डॉ. लिलेश शिंदे'}
-                      </option>
-                      <option value="Shree Ram Multi Speciality Clinic, Adgaon Shivar">
-                        {currentLang === 'en'
-                          ? 'Shree Ram Clinic, Adgaon Shivar • Dr. Mayuree Shinde'
-                          : 'श्री राम क्लिनिक, आडगाव शिवार • डॉ. मयुरी शिंदे'}
-                      </option>
-                    </select>
-                  </div>
+                {/* Email Address */}
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-advait-navy">
+                    {currentLang === 'en' ? 'Email Address' : 'ईमेल'}
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="name@example.com"
+                    className={`w-full px-3.5 py-2 rounded-xl border text-xs sm:text-sm text-advait-navy focus:outline-none focus:ring-2 focus:ring-advait-blue/30 ${
+                      errors.email ? 'border-red-500 bg-red-50/50' : 'border-advait-border bg-slate-50/50 focus:bg-white'
+                    }`}
+                  />
                 </div>
 
-                {/* Select Doctor / Specialist Required */}
+                {/* 1. Select Doctor / Specialist Required (Positioned First) */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-advait-navy flex items-center justify-between gap-1">
                     <span className="flex items-center gap-1">
                       <Stethoscope className="w-3.5 h-3.5 text-advait-blue" />
-                      <span>{currentLang === 'en' ? 'Assigned Doctor / Specialist *' : 'तज्ज्ञ डॉक्टर निवडा *'}</span>
+                      <span>{currentLang === 'en' ? 'Select Doctor / Specialist *' : 'तज्ज्ञ डॉक्टर निवडा *'}</span>
                     </span>
-                    <span className="text-[10px] font-normal text-advait-blue bg-advait-blue-soft px-2 py-0.5 rounded-md border border-advait-blue/20">
-                      {currentLang === 'en' ? 'Auto-synced' : 'शाखेशी संलग्न'}
+                    <span className="text-[10px] font-semibold text-advait-blue bg-advait-blue-soft px-2 py-0.5 rounded-md border border-advait-blue/20">
+                      {currentLang === 'en' ? 'Auto-synced with clinic' : 'क्लिनिकशी संलग्न'}
                     </span>
                   </label>
                   <select
                     value={formData.preferredDoctor}
                     onChange={(e) => handleDoctorChange(e.target.value)}
-                    className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30 truncate"
+                    className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-semibold focus:outline-none focus:ring-2 focus:ring-advait-blue/30"
                   >
                     <option value={DOCTOR_INFO.name}>
-                      Dr. Lilesh A. Shinde — Advait Clinic, Indira Nagar
+                      Dr. Lilesh A. Shinde — Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009
                     </option>
                     <option value={DOCTOR_MAYUREE_INFO.name}>
-                      Dr. Mayuree L. Shinde — Shree Ram Clinic, Adgaon Shivar
+                      Dr. Mayuree L. Shinde — Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003
                     </option>
                   </select>
+                </div>
 
-                  {/* Auto-Assignment Notification Pill */}
-                  <div className="flex items-start gap-2 p-2.5 rounded-xl bg-advait-blue-soft/70 border border-advait-blue/20 text-[11px] text-advait-navy">
-                    <span className="font-bold text-advait-blue shrink-0 mt-0.5">ℹ️ {currentLang === 'en' ? 'Address:' : 'पत्ता:'}</span>
-                    <span className="leading-relaxed">
-                      {formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Adgaon') || formData.preferredDoctor?.includes('Mayuree')
-                        ? currentLang === 'en'
-                          ? 'Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Nashik - 422003 (Dr. Mayuree Shinde)'
-                          : 'श्री राम मल्टी स्पेशालिटी क्लिनिक, शॉप नं. ०१, तळमजला, एसबीआय बँक व स्वागत स्वीट्स जवळ, जत्रा हॉटेल चौफुली, आडगाव शिवार, नाशिक - ४२२००३ (डॉ. मयुरी शिंदे)'
-                        : currentLang === 'en'
-                          ? 'Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009 (Dr. Lilesh Shinde)'
-                          : 'अद्वैत मल्टी स्पेशालिटी क्लिनिक, प्लॉट नं. २०-ए, चंद्रभागा, शांतिधाम अपार्ट. समोर, गीतांजली कॉलनी, इंदिरा नगर, नाशिक - ४२२००९ (डॉ. लिलेश शिंदे)'}
+                {/* 2. Select Preferred Clinic & Address (Positioned Second) */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-advait-navy">
+                    {currentLang === 'en' ? 'Clinic Location & Full Address *' : 'क्लिनिक व पूर्ण पत्ता निवडा *'}
+                  </label>
+                  <select
+                    value={formData.preferredClinic}
+                    onChange={(e) => handleClinicChange(e.target.value)}
+                    className="w-full max-w-full px-3 py-2.5 rounded-xl border border-advait-border bg-slate-50/50 focus:bg-white text-xs sm:text-sm text-advait-navy font-medium focus:outline-none focus:ring-2 focus:ring-advait-blue/30"
+                  >
+                    <option value={ADVAIT_LOCATION_ADDRESS}>
+                      Advait Multi Speciality Clinic, Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009
+                    </option>
+                    <option value={SHREE_RAM_LOCATION_ADDRESS}>
+                      Shree Ram Multi Speciality Clinic, Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003
+                    </option>
+                  </select>
+                </div>
+
+                {/* Structured Location & Doctor Info Card (Fully Contained & Well-Structured) */}
+                <div className="p-3.5 rounded-2xl bg-advait-blue-soft/70 border border-advait-blue/20 text-xs space-y-2 shadow-2xs">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-1.5 font-extrabold text-advait-navy">
+                      <Stethoscope className="w-4 h-4 text-advait-blue shrink-0" />
+                      <span>{formData.preferredDoctor?.includes('Mayuree') || formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Panchavati') ? DOCTOR_MAYUREE_INFO.name : DOCTOR_INFO.name}</span>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-advait-blue text-white shrink-0">
+                      {formData.preferredDoctor?.includes('Mayuree') || formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Panchavati') ? 'Smile Makeover & Cosmetic Dentist' : 'M.D.S. Prosthodontist & Implantologist'}
                     </span>
+                  </div>
+
+                  <div className="flex items-start gap-2 text-slate-700 text-[11px] sm:text-xs leading-relaxed pt-1.5 border-t border-advait-blue/15">
+                    <div className="break-words leading-tight space-y-0.5">
+                      <p className="font-bold text-advait-navy">
+                        {formData.preferredDoctor?.includes('Mayuree') || formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Panchavati') ? 'Shree Ram Multi Speciality Clinic' : 'Advait Multi Speciality Clinic'}
+                      </p>
+                      <p className="text-slate-600 text-[11px] leading-snug">
+                        {formData.preferredDoctor?.includes('Mayuree') || formData.preferredClinic.includes('Shree Ram') || formData.preferredClinic.includes('Panchavati')
+                          ? 'Shop No. 01, Ground Floor, Near SBI Bank & Swagat Sweets, Jatra Hotel Chaufali, Adgaon Shivar, Panchavati, Nashik - 422003'
+                          : 'Plot No. 20-A, Chandrabhaga, Opp. Shantidham Apt., Geetanjali Colony, Indira Nagar, Nashik - 422009'}
+                      </p>
+                    </div>
                   </div>
                 </div>
 

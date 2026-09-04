@@ -56,7 +56,7 @@ export const generateStructuredWhatsAppUrl = (data: AppointmentFormData): string
     `━━━━━━━━━━━━━━━━━━━━━━━━`,
     `👤 *Patient Name:* ${data.fullName.trim()}`,
     `📞 *Phone Number:* ${data.phone.trim()}${emailText}`,
-    `📍 *Clinic Branch:* ${data.preferredClinic}`,
+    `📍 *Clinic Location:* ${data.preferredClinic}`,
     `👨‍⚕️ *Doctor Requested:* ${targetDoctor}`,
     `📅 *Preferred Date:* ${data.preferredDate}`,
     `⏰ *Time Slot:* ${data.preferredTime}`,

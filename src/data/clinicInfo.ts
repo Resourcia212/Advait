@@ -98,7 +98,7 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     id: "clinic-1",
     clinicNumber: 1,
     name: "Advait Multi Speciality Clinic",
-    subname: "Indira Nagar Branch",
+    subname: "Indira Nagar, Nashik",
     leadDoctorName: "Dr. Lilesh A. Shinde",
     leadDoctorDegree: "M.D.S., B.D.S. (MUHS) Nashik",
     leadDoctorRoleEn: "Head Prosthodontist & Implantologist",
@@ -121,7 +121,7 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     id: "clinic-2",
     clinicNumber: 2,
     name: "Shree Ram Multi Speciality Clinic",
-    subname: "Panchavati Branch",
+    subname: "Panchavati, Nashik",
     leadDoctorName: "Dr. Mayuree L. Shinde (Patil)",
     leadDoctorDegree: "B.D.S. (MUHS) Pune",
     leadDoctorRoleEn: "Head Cosmetic Dentist & Smile Makeover",
@@ -138,7 +138,7 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     phoneSecondary: DR_LILESH_PHONE,
     email: "lileshshinde101@gmail.com",
     mapLink: "https://www.google.com/maps/dir/?api=1&destination=Shree+Ram+Multi+Speciality+Dental+Clinic+Shop+No+01+Near+SBI+Bank+Jatra+Hotel+Chaufali+Adgaon+Shivar+Panchavati+Nashik+Maharashtra+422003",
-    badge: "Speciality Dental Care Branch"
+    badge: "Speciality Dental Care Centre"
   }
 ];
 
