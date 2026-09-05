@@ -7,7 +7,7 @@ export const SERVICE_CATEGORIES: CategoryInfo[] = [
     nameMarathi: 'दंत रोपण (इम्प्लांट्स) व प्रोस्थोडॉन्टिक्स',
     icon: 'ShieldCheck',
     description: {
-      en: 'Precision titanium dental implants, implant-retained overdentures, complete dentures (बसिसी), and full mouth rehabilitation.',
+      en: 'Precision titanium dental implants, implant-retained overdentures, complete dentures, and full mouth rehabilitation.',
       mr: 'कायमस्वरूपी टायटॅनियम दंत रोपण, इम्प्लांट ओव्हरडेंचर्स, आधुनिक बसिसी व संपूर्ण मुख पुनर्रचना.'
     }
   },
@@ -97,7 +97,7 @@ export const ALL_SERVICES: ServiceItem[] = [
   },
   {
     id: "complete-dentures",
-    name: "Complete Dentures (बसिसी)",
+    name: "Complete Dentures",
     nameMarathi: "संपूर्ण कवळी - बसिसी (Complete Dentures)",
     category: "implantology",
     shortDescription: {
@@ -168,7 +168,7 @@ export const ALL_SERVICES: ServiceItem[] = [
   },
   {
     id: "cast-partial-dentures",
-    name: "Cast Partial Dentures (अंशिक कवळी)",
+    name: "Cast Partial Dentures",
     nameMarathi: "कास्ट पार्शिअल डेंचर्स - अंशिक कवळी (Cast Partial)",
     category: "implantology",
     shortDescription: {

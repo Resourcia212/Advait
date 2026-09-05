@@ -73,10 +73,10 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
       subtitleEn: "Comfort & Stability",
       subtitleMr: "आरामदायी बसिसी",
       badge: "Custom Prosthetics",
-      descEn: "Complete Dentures (बसिसी), Cast Partial Dentures, flexible lightweight dentures, and implant-retained overdentures.",
+      descEn: "Complete Dentures, Cast Partial Dentures, flexible lightweight dentures, and implant-retained overdentures.",
       descMr: "रुग्णाच्या गरजेनुसार संपूर्ण बसिसी, अंशिक कवळी, फ्लेक्सीबल कवळी आणि इम्प्लांट सपोर्टेड ओव्हरडेंचर पर्याय.",
       icon: <Activity className="w-5 h-5 text-advait-green" />,
-      featuresEn: ["Complete Dentures (बसिसी)", "Cast Partial & Flexible", "Implant Overdentures"],
+      featuresEn: ["Complete Dentures", "Cast Partial & Flexible", "Implant Overdentures"],
       featuresMr: ["संपूर्ण कवळी (बसिसी)", "अंशिक व फ्लेक्सीबल कवळी", "ओव्हर डेंचर"]
     },
     {
@@ -89,7 +89,7 @@ export const SmileDesignFeature: React.FC<SmileDesignFeatureProps> = ({
       subtitleEn: "Fixed Dental Restorations",
       subtitleMr: "पक्के दात",
       badge: "Fixed Restoration",
-      descEn: "Precision-engineered fixed crowns and bridges (पक्के दात) to protect root-canal-treated teeth and replace missing teeth.",
+      descEn: "Precision-engineered fixed crowns and bridges to protect root-canal-treated teeth and replace missing teeth.",
       descMr: "रूट कॅनॉल केलेल्या दातांचे संरक्षण करण्यासाठी व गहाळ दात भरून काढण्यासाठी मजबूत आणि नैसर्गिक पक्के दात.",
       icon: <Hammer className="w-5 h-5 text-advait-blue" />,
       featuresEn: ["Ceramic & Zirconia Crowns", "Multi-Unit Fixed Bridges", "Post & Core Build-up"],
