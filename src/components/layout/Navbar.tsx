@@ -92,10 +92,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logo & Clinic Branding */}
           <button
             onClick={() => scrollTo('home')}
-            className="flex items-center gap-2 sm:gap-2.5 lg:gap-3 text-left shrink-0 group focus:outline-none min-w-0"
+            className="flex items-center gap-2 sm:gap-2.5 text-left shrink-0 group focus:outline-none min-w-0"
             aria-label="Dr. Shinde's Advait Multispeciality Dental Clinic and Implant Centre Home"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl p-1 bg-white/80 backdrop-blur-md border border-white/90 shadow-xs flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-9 lg:h-9 rounded-xl p-1 bg-white/80 backdrop-blur-md border border-white/90 shadow-xs flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105">
               <img
                 src="./assets/logo-icon.jpg"
                 alt="Dr. Shinde's Advait Dental Clinic Emblem"
@@ -103,10 +103,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="text-xs sm:text-sm lg:text-base font-extrabold tracking-tight text-advait-navy leading-none whitespace-nowrap">
+              <span className="text-xs sm:text-[13px] lg:text-sm font-extrabold tracking-tight text-advait-navy leading-none whitespace-nowrap">
                 Dr. Shinde's Advait
               </span>
-              <span className="text-[7.5px] min-[380px]:text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-bold text-advait-teal tracking-tight sm:tracking-normal lg:tracking-wider uppercase mt-0.5 leading-none whitespace-nowrap">
+              <span className="text-[6px] min-[360px]:text-[6.8px] sm:text-[7.5px] lg:text-[8px] font-bold text-advait-teal tracking-normal sm:tracking-wider uppercase mt-0.5 leading-none whitespace-nowrap">
                 Multispeciality Dental Clinic & Implant Centre
               </span>
             </div>
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Navigation Links within Glass Pill Track */}
           <nav
-            className="hidden xl:flex items-center gap-1 bg-white/40 backdrop-blur-md rounded-2xl p-1 border border-white/60 shadow-2xs"
+            className="hidden xl:flex items-center gap-0.5 bg-white/40 backdrop-blur-md rounded-2xl p-0.5 border border-white/60 shadow-2xs"
             aria-label="Main Navigation"
           >
             {primaryNavLinks.map((link) => {
@@ -123,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
+                  className={`px-2.5 lg:px-3 py-1 rounded-xl text-[11.5px] lg:text-xs font-semibold transition-all duration-200 ${
                     isActive
                       ? 'bg-advait-blue text-white shadow-xs font-bold scale-[1.02]'
                       : 'text-advait-navy hover:text-advait-blue hover:bg-white/70'
@@ -136,11 +136,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action CTAs: Language Toggle, Call, and Book Appointment */}
-          <div className="hidden sm:flex items-center gap-2 shrink-0">
+          <div className="hidden sm:flex items-center gap-1.5 lg:gap-2 shrink-0">
             {/* Language Switch Toggle */}
             <button
               onClick={() => onToggleLang(currentLang === 'en' ? 'mr' : 'en')}
-              className="glass-pill flex items-center gap-1 px-2.5 py-1.5 rounded-xl hover:bg-white/90 text-xs font-semibold text-advait-navy transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs"
+              className="glass-pill flex items-center gap-1 px-2 lg:px-2.5 py-1.5 rounded-xl hover:bg-white/90 text-[11px] lg:text-xs font-semibold text-advait-navy transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs"
               title="Toggle Language / भाषा बदला"
               aria-label="Toggle language between English and Marathi"
             >
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Quick Call Button in Glass Pill */}
             <a
               href={`tel:${PRIMARY_PHONE}`}
-              className="glass-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-advait-navy hover:bg-white/90 hover:text-advait-blue transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs"
+              className="glass-pill flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-xl text-[11px] lg:text-xs font-bold text-advait-navy hover:bg-white/90 hover:text-advait-blue transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs"
               aria-label={`Call Advait Dental Clinic at ${DISPLAY_PRIMARY_PHONE}`}
             >
               <Phone className="w-3.5 h-3.5 text-advait-blue" />
@@ -163,7 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Book Appointment CTA Button */}
             <button
               onClick={() => onOpenAppointmentModal()}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-advait-blue hover:bg-advait-blue-dark shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-95"
+              className="flex items-center gap-1.5 px-3 lg:px-3.5 py-1.5 rounded-xl text-[11px] lg:text-xs font-bold text-white bg-advait-blue hover:bg-advait-blue-dark shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-95"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>{currentLang === 'en' ? 'Book Appointment' : 'भेट निश्चित करा'}</span>
