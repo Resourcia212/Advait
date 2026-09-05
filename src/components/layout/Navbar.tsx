@@ -92,22 +92,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logo & Clinic Branding */}
           <button
             onClick={() => scrollTo('home')}
-            className="flex items-center gap-2.5 sm:gap-3 text-left shrink-0 group focus:outline-none"
-            aria-label="Advait Dental Clinic Home"
+            className="flex items-center gap-2 sm:gap-2.5 lg:gap-3 text-left shrink-0 group focus:outline-none min-w-0"
+            aria-label="Dr. Shinde's Advait Multispeciality Dental Clinic and Implant Centre Home"
           >
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl p-1 bg-white/80 backdrop-blur-md border border-white/90 shadow-xs flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-xl p-1 bg-white/80 backdrop-blur-md border border-white/90 shadow-xs flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105">
               <img
                 src="./assets/logo-icon.jpg"
-                alt="Advait Dental Clinic Emblem"
+                alt="Dr. Shinde's Advait Dental Clinic Emblem"
                 className="w-full h-full object-contain rounded-lg"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-base sm:text-lg font-extrabold tracking-tight text-advait-navy leading-none">
-                ADVAIT
+            <div className="flex flex-col min-w-0">
+              <span className="text-xs sm:text-sm lg:text-base font-extrabold tracking-tight text-advait-navy leading-none whitespace-nowrap">
+                Dr. Shinde's Advait
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold text-advait-teal tracking-wider uppercase mt-1 leading-none whitespace-nowrap">
-                Dental Clinic & Implant Center
+              <span className="text-[7.5px] min-[380px]:text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-bold text-advait-teal tracking-tight sm:tracking-normal lg:tracking-wider uppercase mt-0.5 leading-none whitespace-nowrap">
+                Multispeciality Dental Clinic & Implant Centre
               </span>
             </div>
           </button>
@@ -201,11 +201,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2 h-2 rounded-full bg-advait-teal animate-pulse" />
                   <span className="text-[10px] font-black text-advait-teal uppercase tracking-wider">
-                    {currentLang === 'en' ? 'Advait Dental Clinic & Implant Center' : 'अद्वैत डेंटल क्लिनिक आणि इम्प्लांट सेंटर'}
+                    {currentLang === 'en' ? "Dr. Shinde's Advait Dental Clinic" : 'डॉ. शिंदे यांचे अद्वैत डेंटल क्लिनिक'}
                   </span>
                 </div>
                 <p className="text-xs font-bold text-advait-navy">
-                  Dr. Shinde's Dental Multispeciality Clinic
+                  Multispeciality Dental Clinic & Implant Centre
                 </p>
                 <p className="text-[11px] text-advait-text-secondary mt-0.5 italic">
                   "Empathy. Expertise. Excellence."
