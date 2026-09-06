@@ -157,37 +157,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   onClick={onOpenAppointmentModal}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl bg-advait-blue hover:bg-advait-blue-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 group shrink-0"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-advait-blue hover:bg-advait-blue-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 group shrink-0"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>{currentLang === 'en' ? 'Book Appointment' : 'भेट निश्चित करा'}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
-                <a
-                  href={`tel:${PRIMARY_PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl glass-pill hover:bg-white/90 text-advait-navy font-bold text-xs sm:text-sm transition-all shadow-xs hover:scale-[1.02] active:scale-95 group whitespace-nowrap"
-                  title="Call Dr. Lilesh A. Shinde"
-                >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-advait-blue group-hover:scale-110 transition-transform shrink-0" />
-                  <span>
-                    <span className="font-semibold text-slate-500">Dr. Lilesh:</span> {DISPLAY_PRIMARY_PHONE}
-                  </span>
-                </a>
-
-                <a
-                  href={`tel:${SECONDARY_PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl glass-pill hover:bg-white/90 text-advait-navy font-bold text-xs sm:text-sm transition-all shadow-xs hover:scale-[1.02] active:scale-95 group whitespace-nowrap"
-                  title="Call Dr. Mayuree L. Shinde (Patil)"
-                >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-advait-teal group-hover:scale-110 transition-transform shrink-0" />
-                  <span>
-                    <span className="font-semibold text-slate-500">Dr. Mayuree:</span> {DISPLAY_SECONDARY_PHONE}
-                  </span>
-                </a>
+                {/* Single Dual-Doctor Contact Card matching Navbar */}
+                <div className="glass-pill flex flex-col justify-center px-4 py-2 rounded-2xl shadow-xs border border-white/80 hover:bg-white/80 transition-all text-xs font-bold text-advait-navy divide-y divide-slate-100/60">
+                  <a
+                    href={`tel:${PRIMARY_PHONE}`}
+                    className="flex items-center gap-2 py-1 hover:text-advait-blue transition-colors group/call leading-tight"
+                    title="Call Dr. Lilesh A. Shinde"
+                    aria-label={`Call Dr. Lilesh A. Shinde at ${DISPLAY_PRIMARY_PHONE}`}
+                  >
+                    <Phone className="w-3.5 h-3.5 text-advait-blue group-hover/call:scale-110 transition-transform shrink-0" />
+                    <span className="whitespace-nowrap">
+                      <span className="font-semibold text-slate-500">Dr. Lilesh:</span> {DISPLAY_PRIMARY_PHONE}
+                    </span>
+                  </a>
+                  <a
+                    href={`tel:${SECONDARY_PHONE}`}
+                    className="flex items-center gap-2 py-1 hover:text-advait-teal transition-colors group/call leading-tight"
+                    title="Call Dr. Mayuree L. Shinde (Patil)"
+                    aria-label={`Call Dr. Mayuree L. Shinde at ${DISPLAY_SECONDARY_PHONE}`}
+                  >
+                    <Phone className="w-3.5 h-3.5 text-advait-teal group-hover/call:scale-110 transition-transform shrink-0" />
+                    <span className="whitespace-nowrap">
+                      <span className="font-semibold text-slate-500">Dr. Mayuree:</span> {DISPLAY_SECONDARY_PHONE}
+                    </span>
+                  </a>
+                </div>
               </div>
 
               {/* Bottom Quick Links & One-Click Brochure Download */}
