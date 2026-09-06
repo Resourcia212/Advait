@@ -1,7 +1,12 @@
 import React from 'react';
 import { Calendar, ArrowRight, Phone, Award, ShieldCheck, Layers, HeartHandshake, Sparkles, Download, FileText } from 'lucide-react';
 import { Language } from '../../types';
-import { PRIMARY_PHONE, DISPLAY_PRIMARY_PHONE } from '../../data/clinicInfo';
+import {
+  PRIMARY_PHONE,
+  DISPLAY_PRIMARY_PHONE,
+  SECONDARY_PHONE,
+  DISPLAY_SECONDARY_PHONE,
+} from '../../data/clinicInfo';
 
 interface HeroSectionProps {
   currentLang: Language;
@@ -152,10 +157,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="pt-2 flex flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
                 <button
                   onClick={onOpenAppointmentModal}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-advait-blue hover:bg-advait-blue-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 group"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl bg-advait-blue hover:bg-advait-blue-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 group shrink-0"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>{currentLang === 'en' ? 'Book Appointment' : 'भेट निश्चित करा'}</span>
@@ -164,11 +169,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 <a
                   href={`tel:${PRIMARY_PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl glass-pill hover:bg-white/80 text-advait-navy font-bold text-xs sm:text-sm transition-all shadow-xs"
-                  title={`Call ${DISPLAY_PRIMARY_PHONE}`}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl glass-pill hover:bg-white/90 text-advait-navy font-bold text-xs sm:text-sm transition-all shadow-xs hover:scale-[1.02] active:scale-95 group whitespace-nowrap"
+                  title="Call Dr. Lilesh A. Shinde"
                 >
-                  <Phone className="w-4 h-4 text-advait-teal" />
-                  <span>{currentLang === 'en' ? `Call: ${DISPLAY_PRIMARY_PHONE}` : `कॉल करा: ${DISPLAY_PRIMARY_PHONE}`}</span>
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-advait-blue group-hover:scale-110 transition-transform shrink-0" />
+                  <span>
+                    <span className="font-semibold text-slate-500">Dr. Lilesh:</span> {DISPLAY_PRIMARY_PHONE}
+                  </span>
+                </a>
+
+                <a
+                  href={`tel:${SECONDARY_PHONE}`}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 rounded-2xl glass-pill hover:bg-white/90 text-advait-navy font-bold text-xs sm:text-sm transition-all shadow-xs hover:scale-[1.02] active:scale-95 group whitespace-nowrap"
+                  title="Call Dr. Mayuree L. Shinde (Patil)"
+                >
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-advait-teal group-hover:scale-110 transition-transform shrink-0" />
+                  <span>
+                    <span className="font-semibold text-slate-500">Dr. Mayuree:</span> {DISPLAY_SECONDARY_PHONE}
+                  </span>
                 </a>
               </div>
 
