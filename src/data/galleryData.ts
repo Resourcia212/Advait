@@ -63,6 +63,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "clinic",
     imageUrl: "./assets/Gallery/advait-clinic-images3.png",
     tag: "Patient Consultation",
+    featuredInAll: true,
     caption: {
       en: "Detailed, empathetic one-on-one consultation with digital radiographic evaluations to design individualized treatment plans.",
       mr: "डिजिटल एक्स-रे व सविस्तर मार्गदर्शनासह रुग्णांसाठी वैयक्तिक उपचार नियोजन."
@@ -106,6 +107,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "implants-rehab",
     imageUrl: "./assets/Gallery/guided-implantology-digital-radiograph-suite.png",
     tag: "Digital Implantology",
+    featuredInAll: false,
     caption: {
       en: "Real-time integration of 3D bone diagnostics and sterile surgical execution for permanent tooth replacements.",
       mr: "3D बोन मॅपिंग व प्रगत उपकरणांच्या साहाय्याने कायमस्वरूपी दात बसवण्याची प्रक्रिया."
@@ -118,6 +120,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "implants-rehab",
     imageUrl: "./assets/Gallery/precision-restorative-rotary-treatment.png",
     tag: "Restorative Dentistry",
+    featuredInAll: false,
     caption: {
       en: "High-precision rotary instruments restoring worn dentitions, root canals, and crown abutments with micro-accuracy.",
       mr: "मायक्रो-अचूकतेने दात भरणे, रूट कॅनॉल व क्राउन फिटिंगचे आधुनिक उपचार."
@@ -130,6 +133,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "implants-rehab",
     imageUrl: "./assets/Gallery/top-angle-dental-operatory-procedure.png",
     tag: "Surgical Precision",
+    featuredInAll: false,
     caption: {
       en: "Top-down perspective demonstrating sterile field maintenance and synchronized clinical execution.",
       mr: "कडक निर्जंतुकीकरण मानके व आधुनिक साधनांसह नियोजनबद्ध उपचार."

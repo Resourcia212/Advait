@@ -16,6 +16,7 @@ const GalleryCard: React.FC<{
 }> = ({ item, onClick, currentLang }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const allImages = useMemo(() => {
     return [item.imageUrl, ...(item.additionalImages || [])];
@@ -35,6 +36,8 @@ const GalleryCard: React.FC<{
     };
   }, [isHovered, allImages]);
 
+  const activeSrc = allImages[imageIndex] || item.imageUrl;
+
   return (
     <div
       onClick={onClick}
@@ -42,19 +45,27 @@ const GalleryCard: React.FC<{
       onMouseLeave={() => setIsHovered(false)}
       className="bg-white rounded-2xl overflow-hidden border border-advait-border hover:border-advait-blue/40 shadow-xs hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer flex flex-col justify-between"
     >
-      {/* Image Container with smooth slideshow */}
+      {/* Image Container */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
-        {allImages.map((imgSrc, idx) => (
-          <img
-            key={idx}
-            src={imgSrc}
-            alt={`${item.title} view ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-              idx === imageIndex ? 'opacity-100 scale-100 group-hover:scale-105' : 'opacity-0 scale-105 pointer-events-none'
-            }`}
-            loading="lazy"
-          />
-        ))}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-slate-200 animate-pulse flex items-center justify-center">
+            <ImageIcon className="w-8 h-8 text-slate-400 opacity-50" />
+          </div>
+        )}
+
+        <img
+          src={activeSrc}
+          alt={item.title}
+          onLoad={() => setIsLoaded(true)}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = './assets/logo.png';
+            setIsLoaded(true);
+          }}
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading="lazy"
+        />
 
         {/* Hover Dark Overlay with Zoom Icon */}
         <div className="absolute inset-0 bg-advait-navy/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
@@ -99,7 +110,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'all') {
-      return GALLERY_ITEMS.filter((i) => i.featuredInAll);
+      return GALLERY_ITEMS.filter((i) => i.featuredInAll !== false);
     }
     return GALLERY_ITEMS.filter((i) => i.category === selectedCategory);
   }, [selectedCategory]);
@@ -173,7 +184,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
           {GALLERY_CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat.id;
             const count = cat.id === 'all'
-              ? GALLERY_ITEMS.filter((i) => i.featuredInAll).length
+              ? GALLERY_ITEMS.filter((i) => i.featuredInAll !== false).length
               : GALLERY_ITEMS.filter((i) => i.category === cat.id).length;
 
             return (
@@ -196,12 +207,8 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
           })}
         </div>
 
-        {/* Gallery Grid */}
-        <div className={`grid gap-4 sm:gap-6 ${
-          selectedCategory === 'all'
-            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-        }`}>
+        {/* Gallery 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {displayedItems.map((item, idx) => (
             <GalleryCard
               key={item.id}

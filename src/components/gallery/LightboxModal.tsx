@@ -93,6 +93,9 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
           <img
             src={currentItem.imageUrl}
             alt={currentItem.title}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = './assets/logo.png';
+            }}
             className="max-h-[60vh] max-w-full object-contain mx-auto rounded-xl"
           />
         </div>
