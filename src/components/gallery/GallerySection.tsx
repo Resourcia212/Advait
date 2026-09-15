@@ -98,7 +98,9 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
   const [visibleCount, setVisibleCount] = useState<number>(8);
 
   const filteredItems = useMemo(() => {
-    if (selectedCategory === 'all') return GALLERY_ITEMS;
+    if (selectedCategory === 'all') {
+      return GALLERY_ITEMS.filter((i) => i.featuredInAll);
+    }
     return GALLERY_ITEMS.filter((i) => i.category === selectedCategory);
   }, [selectedCategory]);
 
@@ -171,7 +173,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
           {GALLERY_CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat.id;
             const count = cat.id === 'all'
-              ? GALLERY_ITEMS.length
+              ? GALLERY_ITEMS.filter((i) => i.featuredInAll).length
               : GALLERY_ITEMS.filter((i) => i.category === cat.id).length;
 
             return (
@@ -194,8 +196,12 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ currentLang }) =
           })}
         </div>
 
-        {/* Gallery 4-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Gallery Grid */}
+        <div className={`grid gap-4 sm:gap-6 ${
+          selectedCategory === 'all'
+            ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+        }`}>
           {displayedItems.map((item, idx) => (
             <GalleryCard
               key={item.id}

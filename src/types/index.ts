@@ -121,6 +121,7 @@ export interface GalleryItem {
   imageUrl: string;
   additionalImages?: string[];
   tag: string;
+  featuredInAll?: boolean;
 }
 
 export interface AppointmentFormData {

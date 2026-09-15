@@ -50,6 +50,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "clinic",
     imageUrl: "./assets/Gallery/modern-dental-operatory-full-setup.png",
     tag: "Operatory Suite",
+    featuredInAll: true,
     caption: {
       en: "State-of-the-art operatory equipped with an ergonomic dental chair, hospital-grade sterilization protocols, and digital monitoring.",
       mr: "आधुनिक दंत खुर्ची, जागतिक दर्जाची स्वच्छता आणि डिजिटल उपकरणांनी सुसज्ज उपचार दालन."
@@ -75,6 +76,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: "./assets/Gallery/advait-doctors-team-surgical-operatory.png",
     additionalImages: ["./assets/Gallery/clinical-surgery-grayscale-archival.png"],
     tag: "Collaborative Care",
+    featuredInAll: true,
     caption: {
       en: "Dr. Lilesh Shinde and Dr. Mayuree Shinde delivering synchronized, gentle clinical care in sterile operatory conditions.",
       mr: "डॉ. लिलेश शिंदे व डॉ. मयुरी शिंदे यांच्यामार्फत सौम्य, सुरक्षित व अचूक दंतोपचार."
@@ -91,6 +93,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "implants-rehab",
     imageUrl: "./assets/Gallery/dr-shinde-clinical-implant-surgery.png",
     tag: "Implant Surgery",
+    featuredInAll: true,
     caption: {
       en: "Advanced implant placement utilizing real-time digital radiographic display and precision surgical protocols.",
       mr: "डिजिटल एक्स-रे मॉनिटर व अचूक तंत्रज्ञानासह टायटॅनियम दंत रोपण शस्त्रक्रिया."
