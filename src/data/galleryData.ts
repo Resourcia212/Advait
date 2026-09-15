@@ -14,16 +14,19 @@ export const GALLERY_CATEGORIES: GalleryCategoryTab[] = [
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  // ==========================================
+  // Category 1: Clinic & Doctor (clinic)
+  // ==========================================
   {
     id: "gal-doctor",
     title: "Dr. Lilesh A. Shinde (Chief Specialist)",
     titleMarathi: "डॉ. लिलेश ए. शिंदे (प्रमुख तज्ज्ञ)",
     category: "clinic",
     imageUrl: "./assets/dr-lilesh-shinde.png",
-    additionalImages: ["./assets/dr-lilesh-scrubs.jpg"],
-    tag: "Doctor Profile (Hover to Flip)",
+    additionalImages: ["./assets/dr-lilesh-scrubs.jpg", "./assets/Gallery/advait-clinic-images1.png"],
+    tag: "Chief Specialist",
     caption: {
-      en: "Dr. Lilesh A. Shinde, B.D.S., M.D.S. (M.U.H.S.), Reg. No. A-49871. Maxillofacial Prosthodontist & Implantologist. Hover or click to view clinical setup.",
+      en: "Dr. Lilesh A. Shinde, B.D.S., M.D.S. (M.U.H.S.), Reg. No. A-49871. Maxillofacial Prosthodontist & Implantologist. Hover to view clinical setup.",
       mr: "डॉ. लिलेश ए. शिंदे (B.D.S., M.D.S. M.U.H.S., नोंदणी क्र. A-49871), मॅक्सिलोफेशिअल प्रोस्थोडॉन्टिस्ट आणि इम्प्लांटॉलॉजिस्ट."
     }
   },
@@ -33,25 +36,154 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     titleMarathi: "डॉ. मयुरी एल. शिंदे (पाटील) - स्माईल मेकओव्हर व कॉस्मेटिक दंततज्ज्ञ",
     category: "clinic",
     imageUrl: "./assets/dr-team-consultant.png",
-    additionalImages: ["./assets/dr-mayuree-shinde.jpg"],
-    tag: "Cosmetic Dentist (Hover to Flip)",
+    additionalImages: ["./assets/dr-mayuree-shinde.jpg", "./assets/Gallery/advait-clinic-images13.png"],
+    tag: "Cosmetic Dentist",
     caption: {
-      en: "Dr. Mayuree L. Shinde (Patil), B.D.S. (M.U.H.S.) Pune, Reg. No. A-55915. Smile Makeover & Cosmetic Dentist. Mobile: +91 77699 27930. (Hover to view in clinical scrubs).",
+      en: "Dr. Mayuree L. Shinde (Patil), B.D.S. (M.U.H.S.) Pune, Reg. No. A-55915. Smile Makeover & Cosmetic Dentist. Mobile: +91 77699 27930.",
       mr: "डॉ. मयुरी एल. शिंदे (पाटील), B.D.S. (M.U.H.S.) पुणे, नोंदणी क्र. A-55915. स्माईल मेकओव्हर व कॉस्मेटिक दंततज्ज्ञ. मो. ७७६९९ २७९३०."
     }
   },
   {
-    id: "gal-case-1",
-    title: "Full Mouth Rehabilitation & Bite Correction",
-    titleMarathi: "संपूर्ण दातांची पुनर्रचना व चावा दुरुस्ती",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images1.png",
-    tag: "Prosthodontics",
+    id: "gal-operatory-suite",
+    title: "Modern Dental Operatory & Sterilization Suite",
+    titleMarathi: "आधुनिक दंतोपचार दालन व निर्जंतुकीकरण कक्ष",
+    category: "clinic",
+    imageUrl: "./assets/Gallery/modern-dental-operatory-full-setup.png",
+    tag: "Operatory Suite",
     caption: {
-      en: "Comprehensive full-mouth rehabilitation correcting severe attrition, bite collapse, and restoring natural masticatory function.",
-      mr: "घसलेल्या दातांची अचूक चावा दुरुस्ती व संपूर्ण मुख पुनर्रचना उपचार."
+      en: "State-of-the-art operatory equipped with an ergonomic dental chair, hospital-grade sterilization protocols, and digital monitoring.",
+      mr: "आधुनिक दंत खुर्ची, जागतिक दर्जाची स्वच्छता आणि डिजिटल उपकरणांनी सुसज्ज उपचार दालन."
     }
   },
+  {
+    id: "gal-clinical-consultation",
+    title: "Clinical Consultation & Treatment Planning",
+    titleMarathi: "रुग्ण तपासणी व उपचार नियोजन",
+    category: "clinic",
+    imageUrl: "./assets/Gallery/advait-clinic-images3.png",
+    tag: "Patient Consultation",
+    caption: {
+      en: "Detailed, empathetic one-on-one consultation with digital radiographic evaluations to design individualized treatment plans.",
+      mr: "डिजिटल एक्स-रे व सविस्तर मार्गदर्शनासह रुग्णांसाठी वैयक्तिक उपचार नियोजन."
+    }
+  },
+  {
+    id: "gal-doctors-team-care",
+    title: "Collaborative Surgical Team & Live Care",
+    titleMarathi: "तज्ज्ञ डॉक्टरांचे संयुक्त उपचार व रुग्णसेवा",
+    category: "clinic",
+    imageUrl: "./assets/Gallery/advait-doctors-team-surgical-operatory.png",
+    additionalImages: ["./assets/Gallery/clinical-surgery-grayscale-archival.png"],
+    tag: "Collaborative Care",
+    caption: {
+      en: "Dr. Lilesh Shinde and Dr. Mayuree Shinde delivering synchronized, gentle clinical care in sterile operatory conditions.",
+      mr: "डॉ. लिलेश शिंदे व डॉ. मयुरी शिंदे यांच्यामार्फत सौम्य, सुरक्षित व अचूक दंतोपचार."
+    }
+  },
+
+  // ==========================================
+  // Category 2: Implants & Prosthodontics (implants-rehab)
+  // ==========================================
+  {
+    id: "gal-implant-surgery",
+    title: "Precision Dental Implant Surgical Suite",
+    titleMarathi: "अचूक दंत रोपण (इम्प्लांट) शस्त्रक्रिया",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/dr-shinde-clinical-implant-surgery.png",
+    tag: "Implant Surgery",
+    caption: {
+      en: "Advanced implant placement utilizing real-time digital radiographic display and precision surgical protocols.",
+      mr: "डिजिटल एक्स-रे मॉनिटर व अचूक तंत्रज्ञानासह टायटॅनियम दंत रोपण शस्त्रक्रिया."
+    }
+  },
+  {
+    id: "gal-guided-implantology",
+    title: "Guided Implantology & 3D Diagnostics",
+    titleMarathi: "गाइडेड इम्प्लांटॉलॉजी व 3D डिजिटल तपासणी",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/guided-implantology-digital-radiograph-suite.png",
+    tag: "Digital Implantology",
+    caption: {
+      en: "Real-time integration of 3D bone diagnostics and sterile surgical execution for permanent tooth replacements.",
+      mr: "3D बोन मॅपिंग व प्रगत उपकरणांच्या साहाय्याने कायमस्वरूपी दात बसवण्याची प्रक्रिया."
+    }
+  },
+  {
+    id: "gal-precision-rotary",
+    title: "Precision Restorative & Rotary Prosthodontics",
+    titleMarathi: "अचूक रिस्टोरेटिव्ह व रोटरी प्रोस्थोडॉन्टिक्स",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/precision-restorative-rotary-treatment.png",
+    tag: "Restorative Dentistry",
+    caption: {
+      en: "High-precision rotary instruments restoring worn dentitions, root canals, and crown abutments with micro-accuracy.",
+      mr: "मायक्रो-अचूकतेने दात भरणे, रूट कॅनॉल व क्राउन फिटिंगचे आधुनिक उपचार."
+    }
+  },
+  {
+    id: "gal-top-angle-procedure",
+    title: "Specialized Oral Rehabilitation Procedure",
+    titleMarathi: "विशेष संपूर्ण मुख दंतोपचार",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/top-angle-dental-operatory-procedure.png",
+    tag: "Surgical Precision",
+    caption: {
+      en: "Top-down perspective demonstrating sterile field maintenance and synchronized clinical execution.",
+      mr: "कडक निर्जंतुकीकरण मानके व आधुनिक साधनांसह नियोजनबद्ध उपचार."
+    }
+  },
+  {
+    id: "gal-case-8",
+    title: "Implant-Supported Overdenture Solutions",
+    titleMarathi: "इम्प्लांट सपोर्टेड ओव्हरडेंचर कवळी",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/advait-clinic-images8.png",
+    tag: "Denture Solutions",
+    caption: {
+      en: "Secure snap-on overdentures locked onto dental implants, eliminating slipping and restoring chewing comfort.",
+      mr: "इम्प्लांट्सवर लॉक होणारी मजबूत व न निसटणारी आधुनिक कवळी."
+    }
+  },
+  {
+    id: "gal-case-6",
+    title: "Fixed Zirconia Multi-Unit Crown & Bridge",
+    titleMarathi: "झिर्कोनिया पक्के दात व ब्रिज",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/advait-clinic-images6.png",
+    tag: "Fixed Restorations",
+    caption: {
+      en: "High-strength metal-free zirconia crowns and multi-unit bridges for optimal chewing strength and natural aesthetics.",
+      mr: "उच्च ताकदीचे झिर्कोनिया क्राऊन्स व ब्रिज (पक्के दात)."
+    }
+  },
+  {
+    id: "gal-case-12",
+    title: "Full-Arch Precision Implant Reconstruction",
+    titleMarathi: "संपूर्ण जबड्याचे फिक्स इम्प्लांट दंत रोपण",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/advait-clinic-images12.png",
+    tag: "Full Arch Implants",
+    caption: {
+      en: "Full arch fixed prosthetic bridge permanently anchored on strategically positioned dental implants.",
+      mr: "संपूर्ण जबड्यावर फिक्स पक्के दात बसवण्याची आधुनिक इम्प्लांट पद्धत."
+    }
+  },
+  {
+    id: "gal-case-9",
+    title: "TMJ Occlusal Therapy & Milled Splints",
+    titleMarathi: "TMJ सांधेदुखी उपचार व मिल्ड स्प्लिंट",
+    category: "implants-rehab",
+    imageUrl: "./assets/Gallery/advait-clinic-images9.png",
+    tag: "Jaw Joint Therapy",
+    caption: {
+      en: "CAD/CAM fabricated milled occlusal splints for temporomandibular joint pain, clicking, and teeth grinding (bruxism).",
+      mr: "जबड्याच्या सांधेदुखी व दात खाण्याच्या सवयीवर आराम देणारा अचूक स्प्लिंट."
+    }
+  },
+
+  // ==========================================
+  // Category 3: Maxillofacial & Aesthetics (maxillo-aesthetic)
+  // ==========================================
   {
     id: "gal-case-2",
     title: "Orbital & Ocular Maxillofacial Prosthesis",
@@ -62,18 +194,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: {
       en: "Precision skin shade-matched ocular and orbital prosthesis restoring natural facial aesthetics and patient dignity.",
       mr: "रुग्णाच्या त्वचेच्या रंगाशी तंतोतंत जुळणारे अचूक डोळ्याचे कृत्रिम अवयव."
-    }
-  },
-  {
-    id: "gal-case-3",
-    title: "Dental Implant Precision Placement",
-    titleMarathi: "अचूक दंत रोपण (इम्प्लांट्स)",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images3.png",
-    tag: "Dental Implants",
-    caption: {
-      en: "Biocompatible titanium dental implants restoring missing teeth with lifelong stability and bone preservation.",
-      mr: "नैसर्गिक दातांप्रमाणे मजबूत आणि कायमस्वरूपी टायटॅनियम दंत रोपण."
     }
   },
   {
@@ -101,18 +221,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     }
   },
   {
-    id: "gal-case-6",
-    title: "Fixed Zirconia Multi-Unit Crown & Bridge",
-    titleMarathi: "झिर्कोनिया पक्के दात व ब्रिज",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images6.png",
-    tag: "Fixed Restorations",
-    caption: {
-      en: "High-strength metal-free zirconia crowns and multi-unit bridges for optimal chewing strength and natural aesthetics.",
-      mr: "उच्च ताकदीचे झिर्कोनिया क्राऊन्स व ब्रिज (पक्के दात)."
-    }
-  },
-  {
     id: "gal-case-7",
     title: "Auricular & Nasal Prosthetic Reconstruction",
     titleMarathi: "कान व नाकाचे कृत्रिम अवयव पुनर्रचना",
@@ -122,30 +230,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: {
       en: "Custom anatomical silicone ear and nose prostheses rehabilitating post-surgical and congenital craniofacial defects.",
       mr: "शस्त्रक्रियेनंतर अथवा जन्मतः नसलेल्या कान व नाकाचे सिलिकॉन कृत्रिम अवयव."
-    }
-  },
-  {
-    id: "gal-case-8",
-    title: "Implant-Supported Overdenture Solutions",
-    titleMarathi: "इम्प्लांट सपोर्टेड ओव्हरडेंचर कवळी",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images8.png",
-    tag: "Denture Solutions",
-    caption: {
-      en: "Secure snap-on overdentures locked onto dental implants, eliminating slipping and restoring chewing comfort.",
-      mr: "इम्प्लांट्सवर लॉक होणारी मजबूत व न निसटणारी आधुनिक कवळी."
-    }
-  },
-  {
-    id: "gal-case-9",
-    title: "TMJ Occlusal Therapy & Milled Splints",
-    titleMarathi: "TMJ सांधेदुखी उपचार व मिल्ड स्प्लिंट",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images9.png",
-    tag: "Jaw Joint Therapy",
-    caption: {
-      en: "CAD/CAM fabricated milled occlusal splints for temporomandibular joint pain, clicking, and teeth grinding (bruxism).",
-      mr: "जबड्याच्या सांधेदुखी व दात खाण्याच्या सवयीवर आराम देणारा अचूक स्प्लिंट."
     }
   },
   {
@@ -170,18 +254,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: {
       en: "Direct nano-hybrid composite restorations seamlessly blending with natural enamel for invisible repairs.",
       mr: "नैसर्गिक दातांसारखे दिसणारे अदृश्य कंपोझिट फिलिंग्ज."
-    }
-  },
-  {
-    id: "gal-case-12",
-    title: "Full-Arch Precision Implant Reconstruction",
-    titleMarathi: "संपूर्ण जबड्याचे फिक्स इम्प्लांट दंत रोपण",
-    category: "implants-rehab",
-    imageUrl: "./assets/Gallery/advait-clinic-images12.png",
-    tag: "Full Arch Implants",
-    caption: {
-      en: "Full arch fixed prosthetic bridge permanently anchored on strategically positioned dental implants.",
-      mr: "संपूर्ण जबड्यावर फिक्स पक्के दात बसवण्याची आधुनिक इम्प्लांट पद्धत."
     }
   }
 ];
