@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-40 transition-opacity duration-300 xl:hidden pointer-events-auto"
+          className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-40 transition-opacity duration-300 xl:hidden pointer-events-auto"
           aria-hidden="true"
         />
       )}

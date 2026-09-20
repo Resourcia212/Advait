@@ -131,7 +131,7 @@ export const AppointmentPage: React.FC<AppointmentPageProps> = ({
     formData.preferredClinic?.includes('Adgaon');
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-[#F0F7FF] to-white pt-24 pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-[#F0F7FF] to-white pt-24 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back navigation button */}
         <div className="mb-6">

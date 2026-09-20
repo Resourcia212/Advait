@@ -52,6 +52,8 @@ export default {
         body: ['Inter', 'sans-serif'],
       },
       boxShadow: {
+        '2xs': '0 1px 2px 0 rgba(8, 43, 99, 0.04)',
+        'xs': '0 1px 3px 0 rgba(8, 43, 99, 0.06), 0 1px 2px -1px rgba(8, 43, 99, 0.04)',
         'soft': '0 2px 15px -3px rgba(7, 87, 201, 0.07), 0 4px 6px -2px rgba(7, 87, 201, 0.03)',
         'card': '0 10px 30px -5px rgba(8, 43, 99, 0.06), 0 4px 6px -2px rgba(8, 43, 99, 0.02)',
         'elevated': '0 20px 40px -10px rgba(7, 87, 201, 0.12), 0 8px 16px -4px rgba(7, 87, 201, 0.04)',

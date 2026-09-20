@@ -53,7 +53,7 @@ export const DOCTOR_INFO: DoctorInfo = {
 };
 
 // Doctor 2: Dr. Mayuree L. Shinde (Patil)
-export const DOCTOR_MAYUREE_INFO = {
+export const DOCTOR_MAYUREE_INFO: DoctorInfo = {
   name: "Dr. Mayuree L. Shinde (Patil)",
   salutation: "Dr.",
   degrees: "B.D.S. (MUHS) PUNE",
