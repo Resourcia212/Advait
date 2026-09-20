@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://resourcia212.github.io/Advait/sitemap.xml
